@@ -1,0 +1,328 @@
+/*------------- -------------*/
+
+
+/*------------- BOOK VIEW -------------*/
+
+.bookTable > tbody > tr > td, .bookTable > thead > tr > th, p, h1, h2, h3, h4, h5, a, .modal-title{
+  font-family: 'Lekton', sans-serif;
+}
+
+.bookTable > thead > tr > th {
+  font-size: 30px;
+}
+
+.bookTable > tbody > tr > td{
+  font-size: 16px;
+  vertical-align: text-bottom;
+}
+
+/*------------- BOOK VIEW -------------*/
+
+/*------------- HEAD --------*/
+
+.menuFont, .title, .partialTitle {
+  font-family: 'Stint Ultra Condensed', cursive;
+}
+.partialTitle {
+  margin: 1px;
+}
+
+.title { /*hoeBag [buuk stohr]*/
+  font-size: 80px;
+}
+
+.partialTitle { /*Authors: Books: Genres: Our top three:*/
+  font-size: 60px;
+  text-align: center;
+  background-image: url("img/bl2.jpg");
+  margin-bottom: 10px;
+  color: gray;
+}
+
+
+.navbar-form.navbar-right:last-child {
+ margin-right: 18px;
+}
+
+
+/*Centering the navbar*/
+.center.navbar .nav {
+  float:none;
+  display:inline-block;
+  *display:inline; /* ie7 fix */
+  *zoom:1; /* hasLayout ie7 trigger */
+  vertical-align: top;
+}
+
+/*Changing style of navbar li*/
+.navbar-inverse .navbar-nav > li {
+   color:white;
+   font-size:30px;
+   width:100px;
+}
+
+/*Underline all links on hover*/
+.navbar-inverse .navbar-nav > li > a:hover, .navbar-nav > li > a:focus{
+   color:white;
+   text-decoration:underline;
+}
+
+/*Make navbar transparent*/
+.navbar{
+    background-color: transparent;
+    background: transparent;
+}
+
+#nav a.highlite {
+  color:white;
+  font-family: 'Stint Ultra Condensed', cursive;
+  font-size: 30px;
+}
+
+/*Centering the menu title*/
+.menu{
+  text-align:center;
+  position: relative;
+  background-image: url("img/grayBackground.jpg");
+    color : gray;
+}
+
+.menubtnWrapper {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.menubtnWrapper:after {
+  content:"";
+  display: block;
+  clear: both;
+}
+
+/*Position social media buttons*/
+.a2a_kit {
+  float: left;
+  margin-bottom: 2px;
+  margin-left: 2px;
+  display: inline-block;
+}
+
+/*------------- HEAD -------------*/
+
+/*------------- BODY -------------*/
+
+body { 
+  background: gray;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+/*------------- BODY -------------*/
+
+/*------------- FOOTER -------------*/
+.footy {
+  color: gray;
+  background-image: url("img/grayBackground.jpg");
+  padding: 10px;
+  text-align: center;
+  height: 130%;
+  width: 100%;
+}
+/*------------- FOOTER -------------*/
+
+/*---------------- BOOK DETAIL POP UP -------------------*/
+
+/*Set size of panel inside modal in bookDetails*/
+.panel{
+    width: 60%; 
+}
+/*Position book cover in bookDetailView*/
+.bookCover
+{
+  position:fixed;
+  right:1%;
+}
+/*Position the panel in bookView*/
+.center-panel{
+  position:relative;
+  width:100%;
+}
+/*Position Save button in bookEditView*/
+.saveButton{
+  position:right100%;
+}
+
+/*---------------- BOOK DETAIL POP UP -------------------*/
+
+/*---------------- LOG IN / LOG OUT -------------------*/
+.modal-body, .modal-dialog, .panel-body{
+  max-width: 500px;
+  
+}
+/*Position username textbox in loginView*/
+.username{
+  margin-bottom: 30px;
+  width:150px;
+  margin-left: 10px
+}
+/*Position password textbox in loginView*/
+.password{
+  width:150px;
+  margin-left: 10px
+}
+/*---------------- LOG IN / LOG OUT -------------------*/
+
+/*---------------- HOME VIEW -------------------*/
+
+.homeDiv, .homeDiv__body {
+  overflow:hidden;
+  _overflow:visible;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-right: 15px;
+  margin-left: 15px;
+  color: black;
+}
+
+.homeBookDetails{ /*Title, author, publishing year */
+  padding: 5px;
+  background: linear-gradient(#3A3A3A, #B0B0B0);
+  border-radius: 10px;
+  border-color: black;
+
+}
+
+.homeRating{
+  float: right;
+  text-align: right;
+  padding-right: 10px;
+}
+
+.homeBookDescription{
+  padding: 10px;
+  border: 1px solid;
+  border-radius: 10px;
+  background-color: white;
+  word-wrap: break-word;
+}
+
+.homeReadMore{
+  text-align: right;
+  float: right;
+  color: #1E2727;
+}
+
+.homeGenreText {
+  font-style: italic;
+}
+
+.buttonBRC{
+  float: right;
+  position: relative;
+}
+
+.clearThis {
+  clear: both;
+} 
+
+.homeBookCoverImage {
+  float: left;
+  max-width: 170px;
+  width: 100%;
+  height: auto;
+  margin-bottom: 5px;
+}
+
+/*------------- AUTHOR, GENRE, HOME and BOOK divs -------------*/
+
+.authorDiv, .genreDiv, .homeDiv, .bookDiv, .authorDiv{
+  margin-top: 20px;
+  background-color: #E6E6E6;
+  float:left;
+  position: relative;
+  width: 100%; 
+  display:block;
+  border :1px solid #313131;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.accordion {
+  width: 100%;
+  background: white;
+}
+
+.accordion a {
+  width:100%;
+  display:block;
+}
+.accordion .panel-heading {
+  background: #B8B8B8;
+}
+/*------------- AUTHOR, GENRE, HOME and BOOK divs -------------*/
+
+
+/*------------- ADD VIEW -------------*/
+
+.scrollable-menu {
+    height: auto;
+    overflow-x: hidden;
+}
+
+.whiteSurrounding {
+  background: transparent;
+  background-color: transparent;
+  position: relative;
+  display:block;
+  background: white;
+  border :1px solid #BEBFBF;
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.viewTitles {
+  font-family: 'Times new roman', cursive;
+  font-size: 30px;
+  position:relative;
+  text-align: center;
+  margin:0 auto;
+  color: gray;
+  top:0px;
+  margin-bottom: 20px;
+}
+
+/*------------- ADD VIEW -------------*/
+
+/*------------- RATING -------------*/
+.rating{
+  color: #A0A0A0;
+  margin: 0;
+  padding: 0;
+}
+
+ul.rating {
+  display: inline-block;
+}
+
+.rating li {
+  list-style-type: none;
+  display: inline-block;
+  padding: 1px;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.rating .filled {
+  color: green;
+}
+
+/*------------- RATING -------------*/
+

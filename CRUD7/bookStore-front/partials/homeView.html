@@ -1,0 +1,34 @@
+<div class="container" ng-controller="bookController">
+    <div class="homeDiv">
+        <div class="partialTitle row">Our top three:</div>
+        <div modal="opened" ng-include src="'partials/modalView.html'"></div>
+        <div ng-repeat="book in bookData">
+            <div class="row">
+                <div class="homeDiv__body ">
+                    <div ng-repeat="image in imageData">
+                        <a href="#/bookDetalView"><img class="clearThis homeBookCoverImage col-lg-2 col-md-2 col-sm-2 col-xs-12" src={{image.imageUrl}} /></a>
+                    </div>
+                    <div>
+                        <div class="homeBookDetails col-xs-12 col-sm-9 col-md-9 col-lg-10">
+                            <h1>{{book.title}} <p class="homeRating">{{book.rating}}</p></h1>
+
+                            <h3>By: <a class="homeLink" href="#/allBooksByThisAuthor" ng-repeat="author in authorData">{{author.name}}</a></h3>
+
+                            <h4>{{book.year}}</h4>
+
+                            <h4 class="homeGenreText"><a class="homeLink" href="#/genres" ng-repeat="genre in genreData">{{genre.name}}</a></h4>
+
+                            <div class="homeBookDescription">
+
+                                <p>
+                                    {{book.description}}<button type="button" class="btn btn-default buttonBRC" data-toggle="modal" data-target="#myModal" ng-click="getBookId(book.id)">Read more</button>
+                                    <div class="clearThis"></div>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

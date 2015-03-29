@@ -1,0 +1,22 @@
+<div class="container" ng-controller="bookController">
+	<div class="authorDiv">
+		<div class="partialTitle row">Authors:</div>
+        <div modal="opened" ng-include src="'partials/modalView.html'"></div>
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >	
+			<div class="row">		
+				<accordion >				
+				  <accordion-group heading={{book.author}} ng-repeat="book in bookData | filter: query" class="accordion">
+				    <tbody>
+				    	<p>Books by this author:</p>
+				    	<td>
+					      <a href="#" data-toggle="modal" data-target="#myModal" ng-click="getBookId(book.id)">
+					      	{{book.title}} 
+					  	  </a>
+						</td>
+				    </tbody>
+				   </accordion-group>
+			  	</accordion>
+		  	</div>
+		</div>
+	</div>
+</div>
