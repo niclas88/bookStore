@@ -1,66 +1,52 @@
-app.controller("addGenreController", ["$scope", "$location", function($scope, $location){
-	console.log("Controller is working");
-	$scope.newGenreData = {};
+app.controller("addGenreController", ["$scope", "$http", "$location", function ($scope, $http, $location) {
+    console.log("addGenreController is working");
+    $scope.newGenreData = {};
 
-	$scope.formTitle = "Please enter genre credentials";
-	$scope.saveBtnText = "Add to database";
+    $scope.formTitle = "Please enter genre credentials";
+    $scope.saveBtnText = "Add to database";
 
-	$scope.canDelete = true;
+    $scope.canDelete = true;
 
-	//$http.post("someurl", $scope.newBookData);
+    //$http.post("someurl", $scope.newBookData);
 
-	$scope.goTos = function(path) {
-		$location.url(path);
-	}
+    $scope.goTos = function (path) {
+        $location.url(path);
+    }
 
-	$scope.save = function() {
-		//i do nothing yet....
-		console.log("newBookData: ", $scope.newBookData);
-	};
+    $scope.save = function () {
+        //i do nothing yet....
+        console.log("newGenreData: ", $scope.newGenreData);
+    };
 
-	$scope.delete = function() {
-		//i do nothing yet....
-	};
+    $scope.delete = function () {
+        //i do nothing yet....
+    };
 
-	//$http
-	//	.get("data/bookData.json")
-	//	.success(function(data ){
-	//		console.log("Got dummydata", data)
-	//		$scope.bookData = data;
-	//	});
-
-	$scope.authorSelect = function(authIndex) {
-		console.log("User selected author: ", $scope.bookData[authIndex].author);
-		$scope.newBookData.author = $scope.bookData[authIndex].author;
-		console.log("selectedAuthor: ", $scope.newBookData.author);
-	}
-
-	$scope.$watch("selectedAuthor", function(newVal, oldVal) {
-		console.log("selectedAuthor changed from ", oldVal, " to ", newVal);
-	})
+    $http
+		.get("data/bookData.json")
+		.success(function (data) {
+		    console.log("Got dummydata", data)
+		    $scope.genreData = data;
+		});
 
 
-	$scope.genreSelect = function(genreIndex) {
-		console.log("User selected genre: ", $scope.bookData[genreIndex].genre);
-		$scope.newBookData.genre = $scope.bookData[genreIndex].genre;
-		console.log("selectedGenre: ", $scope.newBookData.genre);
-	}
+    $scope.genreSelect = function (genreIndex) {
+        console.log("SCOPE INSIDE", $scope)
+        console.log("User selected genre: ", $scope.genreData[genreIndex].genre);
+        $scope.newGenreData.genre = $scope.genreData[genreIndex].genre;
+        console.log("selectedGenre: ", $scope.newGenreData.genre);
+    }
+    console.log("HEJ", $scope)
 
-	$scope.$watch("selectedAuthor", function(newVal, oldVal) {
-		console.log("selectedAuthor changed from ", oldVal, " to ", newVal);
-	})
-
-	$scope.titleSelect = function(titleIndex) {
-		console.log("User selected genre: ", $scope.bookData[titleIndex].title);
-		$scope.newBookData.title = $scope.bookData[titleIndex].title;
-		console.log("selectedTitle: ", $scope.newBookData.title);
-	}
-
-	$scope.$watch("selectedAuthor", function(newVal, oldVal) {
-		console.log("selectedAuthor changed from ", oldVal, " to ", newVal);
-	})
+    $scope.$watch("selectedGenre", function (newVal, oldVal) {
+        console.log("selectedGenre changed from ", oldVal, " to ", newVal);
+    })
 
 
 
 
 }]);
+
+
+
+
