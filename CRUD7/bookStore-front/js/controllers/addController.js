@@ -73,10 +73,41 @@ app.controller("addController", ["$scope", "book", "author", "genre", "$location
         console.log("selectedGenre changed from ", oldVal, " to ", newVal);
     })
 
-    $scope.titleSelect = function (titleIndex) {
+    var bookId;
+    var bookAuthor;
+    var bookGenre;
+    var bookIsbn;
+    var bookYear;
+    var bookDescription;
+
+    $scope.titleSelect = function (titleIndex, id) {
         console.log("User selected title: ", $scope.bookData[titleIndex].title);
         $scope.newBookData.title = $scope.bookData[titleIndex].title;
         console.log("selectedTitle: ", $scope.newBookData.title);
+
+        for (var i in $scope.bookData) {
+            bookId = $scope.bookData[i].Id;
+            bookAuthor = $scope.bookData[i].authorNames;
+            bookGenre = $scope.bookData[i].genreNames;
+            bookIsbn = $scope.bookData[i].isbn;
+            bookYear = $scope.bookData[i].year;
+            bookDescription = $scope.bookData[i].description;
+
+            for (var j in bookAuthor) {
+                var author = bookAuthor[j].name;                
+            }
+            for (var k in bookGenre) {
+                var genre = bookGenre[k].name
+            }
+            if (bookId == id) {
+                console.log(author, genre, bookIsbn, bookYear, bookDescription);
+                $scope.newBookData.author = author;
+                $scope.newBookData.genre = genre;
+                $scope.newBookData.published = bookYear;
+                $scope.newBookData.isbn = bookIsbn;
+                $scope.newBookData.description = bookDescription;
+            }
+        }
     }
 
     $scope.$watch("selectedTitle", function (newVal, oldVal) {

@@ -8,11 +8,11 @@
             <accordion>
                 <accordion-group heading={{genre.name}} ng-repeat="genre in genreData | filter: query" class="accordion">
                     <tbody>
-                        <p>Books in this genre:</p>
+                        
+                        <p>{{genre.description}}Books in this genre:</p>
                         <td>
                             <a ng-repeat="book in bookData" data-toggle="modal" data-target="#myModal" ng-click="getBookId(book.Id)">
                                 <div ng-repeat="genreName in book.genreNames" ng-if="genre.name == genreName.name">
-                                    {{genre.description}}
                                     {{book.title}}
                                 </div>
                             </a>
