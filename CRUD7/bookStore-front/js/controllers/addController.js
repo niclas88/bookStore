@@ -1,4 +1,4 @@
-app.controller("addController", ["$scope", "$http", "$location", function ($scope, $http, $location) {
+app.controller("addController", ["$scope", "book", "author", "genre", "$location", function ($scope, book, author, genre, $location) {
     console.log("Controller is working");
     $scope.newBookData = {};
 
@@ -6,7 +6,15 @@ app.controller("addController", ["$scope", "$http", "$location", function ($scop
     $scope.saveBtnText = "Add to database";
     $scope.canDelete = true;
 
-
+    $scope.bookData = book.index(function (data) {
+        console.log($scope.bookData, "BOOKS");
+    });
+    $scope.authorData = author.index(function (data) {
+        console.log($scope.authorData, "Authors");
+    });
+    $scope.genreData = genre.index(function (data) {
+        console.log($scope.genreData, "Genres");
+    });
 
 
 
@@ -30,7 +38,8 @@ app.controller("addController", ["$scope", "$http", "$location", function ($scop
         }
         else {
             console.log("newBookData: ", $scope.newBookData);
-
+            console.log("Created new author", $scope.newBookData);
+            book.create($scope.newBookData);
         }
 
 
@@ -42,16 +51,10 @@ app.controller("addController", ["$scope", "$http", "$location", function ($scop
         //i do nothing yet....
     };
 
-    $http
-		.get("data/bookData.json")
-		.success(function (data) {
-		    console.log("Got dummydata", data)
-		    $scope.bookData = data;
-		});
 
     $scope.authorSelect = function (authIndex) {
-        console.log("User selected author: ", $scope.bookData[authIndex].author);
-        $scope.newBookData.author = $scope.bookData[authIndex].author;
+        console.log("User selected author: ", $scope.authorData[authIndex].name);
+        $scope.newBookData.author = $scope.authorData[authIndex].name;
         console.log("selectedAuthor: ", $scope.newBookData.author);
     }
 
@@ -61,8 +64,8 @@ app.controller("addController", ["$scope", "$http", "$location", function ($scop
 
 
     $scope.genreSelect = function (genreIndex) {
-        console.log("User selected genre: ", $scope.bookData[genreIndex].genre);
-        $scope.newBookData.genre = $scope.bookData[genreIndex].genre;
+        console.log("User selected genre: ", $scope.genreData[genreIndex].name);
+        $scope.newBookData.genre = $scope.genreData[genreIndex].name;
         console.log("selectedGenre: ", $scope.newBookData.genre);
     }
 
@@ -87,6 +90,7 @@ app.controller("addController", ["$scope", "$http", "$location", function ($scop
     $scope.closeAlert = function (index) {
         $scope.alerts.splice(index, 1);
     };
+
 
 
 }]);

@@ -1,6 +1,10 @@
-app.controller("addAuthorController", ["$scope", "$http", "$location", function ($scope, $http, $location) {
+app.controller("addAuthorController", ["$scope", "author", "$location", function ($scope, author, $location) {
     console.log("Controller is working");
     $scope.newAuthorData = {};
+
+    $scope.authorData = author.index(function (data) {
+        console.log($scope.authorData, "Authors");
+    });
 
     $scope.formTitle = "Please enter author credentials";
     $scope.saveBtnText = "Add to database";
@@ -14,52 +18,36 @@ app.controller("addAuthorController", ["$scope", "$http", "$location", function 
     }
 
     $scope.save = function () {
-        //i do nothing yet....
-        console.log("newBookData: ", $scope.newBookData);
-    };
+        console.log("newAuthorData: ", $scope.newAuthorData);
+
+        //$http.post("someurl", $scope.newBookData);
+
+        if (!$scope.newAuthorData.name) {
+            $scope.alerts.push({ type: 'danger', msg: 'Enter all the credentials, fker.' })
+
+            $scope.newAuthorData = {};
+            console.log("Some fields weren't filled in. newAuthorData = ", $scope.newAuthorData)
+        }
+        else {
+            console.log("newAuthorData: ", $scope.newAuthorData);
+            console.log("Created new author", $scope.newAuthorData);
+            author.create($scope.newAuthorData);
+        }
+    }
 
     $scope.delete = function () {
         //i do nothing yet....
     };
 
-    $http
-		.get("data/bookData.json")
-		.success(function (data) {
-		    console.log("Got dummydata", data)
-		    $scope.bookData = data;
-		});
 
     $scope.authorSelect = function (authIndex) {
-        console.log("User selected author: ", $scope.bookData[authIndex].author);
-        $scope.newBookData.author = $scope.bookData[authIndex].author;
-        console.log("selectedAuthor: ", $scope.newBookData.author);
+        console.log("User selected author: ", $scope.authorData[authIndex].name);
+        $scope.newAuthorData.name = $scope.authorData[authIndex].name;
+        console.log("selectedAuthor: ", $scope.newAuthorData.author);
     }
 
-    $scope.$watch("selectedAuthor", function (newVal, oldVal) {
-        console.log("selectedAuthor changed from ", oldVal, " to ", newVal);
-    })
 
 
-    $scope.genreSelect = function (genreIndex) {
-        console.log("User selected genre: ", $scope.bookData[genreIndex].genre);
-        $scope.newBookData.genre = $scope.bookData[genreIndex].genre;
-        console.log("selectedGenre: ", $scope.newBookData.genre);
-    }
 
-    $scope.$watch("selectedAuthor", function (newVal, oldVal) {
-        console.log("selectedAuthor changed from ", oldVal, " to ", newVal);
-    })
-
-    $scope.titleSelect = function (titleIndex) {
-        console.log("User selected genre: ", $scope.bookData[titleIndex].title);
-        $scope.newBookData.title = $scope.bookData[titleIndex].title;
-        console.log("selectedTitle: ", $scope.newBookData.title);
-    }
-
-    $scope.$watch("selectedAuthor", function (newVal, oldVal) {
-        console.log("selectedAuthor changed from ", oldVal, " to ", newVal);
-    })
-
-
-}]);
+    }]);
 

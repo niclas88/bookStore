@@ -25,23 +25,16 @@
 
 
                         <div class="input-group form-group">
-                            <input type="text" placeholder="Author" ng-model="newBookData.author" class="form-control" aria-label="...">
+                            <input type="text" placeholder="Author" ng-model="newAuthorData.name" class="form-control" aria-label="...">
                             <div class="input-group-btn" dropdown>
                                 <button type="button" class="btn btn-default dropdown-toggle" dropdown-toggle aria-expanded="false">Existing</button>
                                 <ul class="dropdown-menu dropdown-menu-right scrollable-menu" role="menu">
-                                    <li ng-repeat="author in bookData">
-                                        <a href="" ng-click="authorSelect($index)">{{author.author}}</a>
+                                    <li ng-repeat="author in authorData">
+                                        <a href="" ng-click="authorSelect($index)">{{author.name}}</a>
                                     </li>
                                 </ul>
                             </div><!-- /btn-group -->
                         </div><!-- /input-group -->
-
-
-
-
-                        <div class="form-group marg">
-                            <textarea class="form-control" id="data" ng-model="newBookData.description" rows="5" placeholder="Add author description here..."></textarea>
-                        </div>
 
 
 
