@@ -15,19 +15,20 @@
 				    		</tr>
 				    	</thead>
 				    	<tbody>
-				    		<tr ng-repeat="book in bookData | filter: query">
-				    			<td>
-				    				<a href="#" data-toggle="modal" data-target="#myModal" ng-click="getBookId(book.id)">
-				      					{{book.title}} 
-				  	  				</a>
-				    			</td>
-				    			<td ng-repeat="author in authorData">{{author.name}}</td>
-				    			<td ng-repeat="genre in genreData">{{genre.name}}</td>
-				    			<td><button type="button" id="{{book.Id}}" class="btn btn-default" data-toggle="modal" data-target="#myModal" ng-click="getBookId(book.Id)">
-				  						Book Details
-									</button>
-								</td>
-				    		</tr>
+                            <tr ng-repeat="book in bookData">
+                                <td>
+                                    <a data-toggle="modal" id="{{book.Id}}" data-target="#myModal" ng-click="getBookId(book.Id)">
+                                        {{book.title}}
+                                    </a>
+                                </td>
+                                <td ng-repeat="author in book.authorNames">{{author.name}}</td>
+                                <td ng-repeat="genre in book.genreNames">{{genre.name}}</td>
+                                <td>
+                                    <button type="button" id="{{book.Id}}" class="btn btn-default" data-toggle="modal" data-target="#myModal" ng-click="getBookId(book.Id)">
+                                        Book Details
+                                    </button>
+                                </td>
+                            </tr>
 				    	</tbody>
 				  </table>
 			</div>

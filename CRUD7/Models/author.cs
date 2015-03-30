@@ -15,6 +15,7 @@ namespace CRUD7.Models
         public author()
         {
             Books = new HashSet<book>();
+
         }
     }
 }

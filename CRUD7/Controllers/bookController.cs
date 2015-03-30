@@ -28,8 +28,8 @@ namespace CRUD7.Controllers
                {
                    Id = b.Id,
                    title = b.title,
-                   authors = b.Authors,
-                   genres = b.Genres,
+                   authors = b.authors,
+                   genres = b.genres,
                    bookRatings = b.ratings,
                    bookImages = b.images,
                    year = b.year,
@@ -66,33 +66,74 @@ namespace CRUD7.Controllers
 
             return Books;
         }
+        //public List<authorDTO> GetAuthors()
+        //{
+        //    // Get all books using a LINQ question
+        //    // collect them in rawBooks
+        //    // (Please note: Method calls can not be done in a LINQ question)
+        //    var rawAuthors =
+        //       from a in db.authors
+        //       select new authorDTOtemp()
+        //       {
+        //           Id = a.Id,
+        //           name = a.name
+        //       };
 
-        private List<string> getAuthorNames(ICollection<author> authors)
+        //    // Now loop through our rawBooks (a list of BookDTOtemp objects)
+        //    // and create a list of BookDTO objects
+        //    // use the helper funtion getAuthorNames to transform
+        //    // a list of authors to a list of authornames (strings)
+        //    var Authors = new List<authorDTO>();
+        //    foreach (var author in rawAuthors)
+        //    {
+        //        Authors.Add(
+        //            new authorDTO()
+        //            {
+        //                Id = author.Id,
+        //                name = author.name,
+        //                books = getBookNames(author.books),
+        //            }
+
+        //        );
+        //    }
+
+        //    return Authors;
+        //}
+        private List<string> getBookNames(ICollection<book> books)
         {
-            var authorNames = new List<string>();
+            var bookNames = new List<string>();
+            foreach (var book in books)
+            {
+                bookNames.Add(book.title);
+            }
+            return bookNames;
+        }
+        private List<author> getAuthorNames(ICollection<author> authors)
+        {
+            var authorNames = new List<author>();
             foreach (var author in authors)
             {
-                authorNames.Add(author.name);
+                authorNames.Add(author);
             }
             return authorNames;
         }
 
-        private List<string> getGenreNames(ICollection<genre> genres)
+        private List<genre> getGenreNames(ICollection<genre> genres)
         {
-            var genreNames = new List<string>();
+            var genreNames = new List<genre>();
             foreach (var genre in genres)
             {
-                genreNames.Add(genre.name);
+                genreNames.Add(genre);
             }
             return genreNames;
         }
 
-        private List<string> getImage(ICollection<image> images)
+        private List<image> getImage(ICollection<image> images)
         {
-            var imageNames = new List<string>();
+            var imageNames = new List<image>();
             foreach (var image in images)
             {
-                imageNames.Add(image.imageUrl);
+                imageNames.Add(image);
             }
             return imageNames;
         }
@@ -122,9 +163,10 @@ namespace CRUD7.Controllers
                    isbn = b.isbn,
                    stock = b.stock,
                    title = b.title,
-                   authorNames = b.Authors,
+                   authorNames = b.authors,
+                   genreNames = b.genres,
                    bookRatings = b.ratings,
-                   bookImages = b.images,
+                   bookImages = b.images
                };
 
             var rawBook = rawBooks.First();

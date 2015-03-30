@@ -20,14 +20,14 @@
           <li><a class="menuFont" onclick="highlite(this);" href="" ng-click="goTo('/books')">Books</a></li>
           <li><a class="menuFont" onclick="highlite(this);" href="" ng-click="goTo('/genres')">Genres</a></li>
           <li><a class="menuFont" onclick="highlite(this);" href="" ng-click="goTo('/add')" ng-show="showAdd">+Add+</a></li>     
-          <li><a href="#" class="menuFont" ng-hide="hideLogIn" data-toggle="modal" data-target="#loginModal">Log in</a></li>
-          <li><a href="#" class="menuFont" ng-show="showLogOut" ng-click="logOut()">Log out</a></li>
+          <li><a class="menuFont" ng-hide="hideLogIn" data-toggle="modal" data-target="#loginModal">Log in</a></li>
+          <li><a class="menuFont" ng-show="showLogOut" ng-click="logOut()">Log out</a></li>
             <form class="navbar-form navbar-right" role="search">
               <div class="form-group" ng-controller="searchController">
                 <input ng-model="query[sortBy]" type="text" class="form-control" placeholder="Quick search"/>
                 <!--  value="{{option | lowercase}}" -->
  
-                <button type="submit" class="btn btn-default" ng-click="goSearch()">Go!</button>
+                <button type="submit" class="btn btn-default" ng-click="goSearch()">Go</button>
               </div>              
             </form>
         </ul>

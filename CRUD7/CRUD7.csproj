@@ -153,6 +153,8 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\author.cs" />
+    <Compile Include="Models\authorDTO.cs" />
+    <Compile Include="Models\authorDTOtemp.cs" />
     <Compile Include="Models\book.cs" />
     <Compile Include="Models\bookDetailDTO.cs" />
     <Compile Include="Models\bookDetailDTOtemp.cs" />

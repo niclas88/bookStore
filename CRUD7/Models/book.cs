@@ -12,14 +12,14 @@ namespace CRUD7.Models
         public int year { get; set; }
         public int stock { get; set; }
         public string isbn { get; set; }
-        public ICollection<author> Authors { get; set; }
-        public ICollection<genre> Genres { get; set; }
+        public ICollection<author> authors { get; set; }
+        public ICollection<genre> genres { get; set; }
         public ICollection<image> images { get; set; }
         public ICollection<rating> ratings { get; set; }
         public book()
         {
-            Authors = new HashSet<author>();
-            Genres = new HashSet<genre>();
+            authors = new HashSet<author>();
+            genres = new HashSet<genre>();
             images = new HashSet<image>();
             ratings = new HashSet<rating>();
         }

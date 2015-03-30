@@ -13,9 +13,9 @@ namespace CRUD7.Models
         public string isbn { get; set; }
         public int stock { get; set; }
 
-        public List<string> authorNames { get; set; }
-        public List<string> genreNames { get; set; }
+        public List<author> authorNames { get; set; }
+        public List<genre> genreNames { get; set; }
         public List<double> ratings { get; set; }
-        public List<string> images { get; set; }
+        public List<image> images { get; set; }
     }
 }
