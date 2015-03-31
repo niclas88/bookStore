@@ -98,7 +98,7 @@ app.controller("addController", ["$scope", "book", "author", "genre", "$location
     }
     $scope.delete = function () {
         console.log(idToDelete);
-        book.destroy("delete", idToDelete);
+        book.destroy({ id: idToDelete });
     };
 
     $scope.$watch("selectedTitle", function (newVal, oldVal) {
