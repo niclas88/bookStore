@@ -1,5 +1,5 @@
 app.controller("addController", ["$scope", "book", "author", "genre", "$location", function ($scope, book, author, genre, $location) {
-    console.log("Controller is working");
+    console.log("addController is working");
     $scope.newBookData = {};
 
     $scope.formTitle = "Please enter book credentials";
@@ -15,9 +15,6 @@ app.controller("addController", ["$scope", "book", "author", "genre", "$location
     $scope.genreData = genre.index(function (data) {
         console.log($scope.genreData, "Genres");
     });
-
-
-
 
 
 
@@ -41,15 +38,8 @@ app.controller("addController", ["$scope", "book", "author", "genre", "$location
             console.log("Created new author", $scope.newBookData);
             book.create($scope.newBookData);
         }
-
-
-
-
     };
 
-    $scope.delete = function () {
-        //i do nothing yet....
-    };
 
 
     $scope.authorSelect = function (authIndex) {
@@ -73,12 +63,6 @@ app.controller("addController", ["$scope", "book", "author", "genre", "$location
         console.log("selectedGenre changed from ", oldVal, " to ", newVal);
     })
 
-    var bookId;
-    var bookAuthor;
-    var bookGenre;
-    var bookIsbn;
-    var bookYear;
-    var bookDescription;
 
     $scope.titleSelect = function (titleIndex, id) {
         console.log("User selected title: ", $scope.bookData[titleIndex].title);
@@ -86,12 +70,12 @@ app.controller("addController", ["$scope", "book", "author", "genre", "$location
         console.log("selectedTitle: ", $scope.newBookData.title);
 
         for (var i in $scope.bookData) {
-            bookId = $scope.bookData[i].Id;
-            bookAuthor = $scope.bookData[i].authorNames;
-            bookGenre = $scope.bookData[i].genreNames;
-            bookIsbn = $scope.bookData[i].isbn;
-            bookYear = $scope.bookData[i].year;
-            bookDescription = $scope.bookData[i].description;
+           var bookId = $scope.bookData[i].Id;
+           var bookAuthor = $scope.bookData[i].authorNames;
+           var bookGenre = $scope.bookData[i].genreNames;
+           var bookIsbn = $scope.bookData[i].isbn;
+           var bookYear = $scope.bookData[i].year;
+           var bookDescription = $scope.bookData[i].description;
 
             for (var j in bookAuthor) {
                 var author = bookAuthor[j].name;                
@@ -106,9 +90,16 @@ app.controller("addController", ["$scope", "book", "author", "genre", "$location
                 $scope.newBookData.published = bookYear;
                 $scope.newBookData.isbn = bookIsbn;
                 $scope.newBookData.description = bookDescription;
-            }
+               
+                idToDelete = $scope.bookData[i].Id;
+                console.log(idToDelete);
+            }            
         }
     }
+    $scope.delete = function () {
+        console.log(idToDelete);
+        book.destroy("delete", idToDelete);
+    };
 
     $scope.$watch("selectedTitle", function (newVal, oldVal) {
         console.log("selectedTitle changed from ", oldVal, " to ", newVal);
