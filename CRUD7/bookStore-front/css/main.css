@@ -3,7 +3,7 @@
 
 /*------------- BOOK VIEW -------------*/
 
-.bookTable > tbody > tr > td, .bookTable > thead > tr > th, p, h1, h2, h3, h4, h5, a, .modal-title{
+.bookTable > tbody > tr > td, .bookTable > thead > tr > th, p, h1, h2, h3, h4, h5, .modal-title{
   font-family: 'Lekton', sans-serif;
 }
 
@@ -14,6 +14,52 @@
 .bookTable > tbody > tr > td{
   font-size: 16px;
   vertical-align: text-bottom;
+}
+
+@media only screen and (max-width: 800px) {
+#tiny-screen-tables table,
+#tiny-screen-tables thead,
+#tiny-screen-tables tbody,
+#tiny-screen-tables th,
+#tiny-screen-tables td,
+#tiny-screen-tables tr {
+display: block;
+}
+ 
+#tiny-screen-tables thead tr {
+position: absolute;
+top: -9999px;
+left: -9999px;
+}
+ 
+#tiny-screen-tables tr { border: 1px solid #ccc; }
+ 
+#tiny-screen-tables td {
+border: none;
+border-bottom: 1px solid #eee;
+position: relative;
+padding-left: 50%;
+white-space: normal;
+text-align:left;
+}
+ 
+#tiny-screen-tables td:before {
+position: absolute;
+top: 6px;
+left: 6px;
+width: 45%;
+padding-right: 10px;
+white-space: nowrap;
+text-align:left;
+font-size: 18px;
+}
+ 
+#tiny-screen-tables td:before { 
+  content: attr(data-title); }
+}
+
+.italic {
+  font-style: italic;
 }
 
 /*------------- BOOK VIEW -------------*/
@@ -79,6 +125,12 @@
   font-size: 30px;
 }
 
+#tableBling a.bling{
+  color: black;
+  text-decoration: underline;
+  font-size: 30px;
+}
+
 /*Centering the menu title*/
 .menu{
   text-align:center;
@@ -128,34 +180,40 @@ body {
   background-image: url("img/grayBackground.jpg");
   padding: 10px;
   text-align: center;
-  height: 130%;
-  width: 100%;
+  
+
 }
 /*------------- FOOTER -------------*/
 
-/*---------------- BOOK DETAIL POP UP -------------------*/
+/*---------------- BOOK MODAL -------------------*/
 
-/*Set size of panel inside modal in bookDetails*/
-.panel{
-    width: 60%; 
-}
-/*Position book cover in bookDetailView*/
-.bookCover
-{
-  position:fixed;
-  right:1%;
-}
-/*Position the panel in bookView*/
-.center-panel{
-  position:relative;
-  width:100%;
-}
-/*Position Save button in bookEditView*/
-.saveButton{
-  position:right100%;
+.modalBookDetails{
+  float: right;
+  width: 100%; 
+  padding: 10px;
 }
 
-/*---------------- BOOK DETAIL POP UP -------------------*/
+.modalBookDescription {
+  padding: 10px;
+}
+
+.modalBookImage {
+  max-width: 150px;
+  width: 100%;
+  height: auto;
+  max-height: 230px;
+  margin-bottom: 10px;
+}
+
+.editLink {
+  float: left;
+}
+
+.modalEditTextArea {
+  margin-bottom: 15px;
+}
+
+/*---------------- BOOK MODAL -------------------*/
 
 /*---------------- LOG IN / LOG OUT -------------------*/
 .modal-body, .modal-dialog, .panel-body{
@@ -326,3 +384,22 @@ ul.rating {
 
 /*------------- RATING -------------*/
 
+
+
+
+html, body {
+  height: 100%;
+}
+main {
+  min-height: 100%;
+  /* equal to footer height */
+  margin-bottom: -120px; 
+}
+main:after {
+  content: "";
+  display: block;
+}
+footer, main:after {
+  /* .push must be the same height as footer */
+  height: 120px; 
+}
