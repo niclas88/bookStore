@@ -294,6 +294,15 @@ body {
   margin-bottom: 5px;
 }
 
+.homeLink {
+    color: black;
+}
+
+.homeLink:hover {
+    color:white;
+    text-decoration: underline;
+}
+
 /*------------- AUTHOR, GENRE, HOME and BOOK divs -------------*/
 
 .authorDiv, .genreDiv, .homeDiv, .bookDiv, .authorDiv{
@@ -390,6 +399,7 @@ ul.rating {
 html, body {
   height: 100%;
 }
+
 main {
   min-height: 100%;
   /* equal to footer height */
