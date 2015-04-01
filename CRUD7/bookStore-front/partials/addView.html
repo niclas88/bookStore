@@ -62,7 +62,7 @@
 
 
                             <div class="input-group form-group">
-                                <input type="text" placeholder="Genre" ng-model="newBookData.genre" class="form-control" aria-label="...">
+                                <input type="text" placeholder="Genre" ng-model="newBookDataPresentation.genres" class="form-control" aria-label="...">
                                 <div class="input-group-btn" dropdown>
                                     <button type="button" class="btn btn-default dropdown-toggle" dropdown-toggle aria-expanded="false">Existing</button>
                                     <ul class="dropdown-menu dropdown-menu-right scrollable-menu" role="menu">
@@ -86,6 +86,17 @@
 
                             <div class="form-group marg">
                                 <textarea class="form-control" id="data" ng-model="newBookData.description" rows="5" placeholder="Add book description here..."></textarea>
+                            </div>
+                            <div class="form-group marg">
+                                <input type="text" placeholder="Genre" ng-model="newBookDataPresentation.images" class="form-control" aria-label="...">
+                                <div class="input-group-btn" dropdown>
+                                    <button type="button" class="btn btn-default dropdown-toggle" dropdown-toggle aria-expanded="false">Existing</button>
+                                    <ul class="dropdown-menu dropdown-menu-right scrollable-menu" role="menu">
+                                        <li ng-repeat="image in imageData">
+                                            <a href="" ng-click="imageSelect($index)">{{image.imageUrl}}</a>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
 
 

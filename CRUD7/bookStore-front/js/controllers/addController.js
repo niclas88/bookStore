@@ -49,6 +49,7 @@ app.controller("addController", ["$scope", "book", "author", "genre", "$location
             book.create(toSave);
         }
     };
+        
 
     // Skapa samma för genre etc...
     var authorId;
@@ -80,11 +81,33 @@ app.controller("addController", ["$scope", "book", "author", "genre", "$location
         console.log("selectedAuthor changed from ", oldVal, " to ", newVal);
     })
 
+    $scope.newBookData.genres = [];
+    $scope.newBookDataPresentation = {}
 
     $scope.genreSelect = function (genreIndex) {
         console.log("User selected genre: ", $scope.genreData[genreIndex].name);
-        $scope.newBookData.genre = $scope.genreData[genreIndex].name;
-        console.log("selectedGenre: ", $scope.newBookData.genre);
+        $scope.newBookData.authors.push($scope.authorData[genreIndex]);
+
+        $scope.newBookDataPresentation.genres = "";
+        for (var i = 0; i < $scope.newBookData.genres.length; i++) {
+            i > 0 && ($scope.newBookDataPresentation.genres += ", ");
+            $scope.newBookDataPresentation.genres += $scope.newBookData.genres[i].name;
+        }
+
+    }
+    $scope.newBookData.images = [];
+    $scope.newBookDataPresentation = {}
+
+    $scope.imageSelect = function (imageIndex) {
+        console.log("User selected image: ", $scope.imageData[imageIndex].imageUrl);
+        $scope.newBookData.images.push($scope.imageData[imageIndex]);
+
+        $scope.newBookDataPresentation.images = "";
+        for (var i = 0; i < $scope.newBookData.images.length; i++) {
+            i > 0 && ($scope.newBookDataPresentation.images += ", ");
+            $scope.newBookDataPresentation.images += $scope.newBookData.images[i].imageUrl;
+        }
+
     }
 
     $scope.$watch("selectedGenre", function (newVal, oldVal) {
@@ -104,11 +127,15 @@ app.controller("addController", ["$scope", "book", "author", "genre", "$location
            var bookIsbn = $scope.bookData[i].isbn;
            var bookYear = $scope.bookData[i].year;
            var bookDescription = $scope.bookData[i].description;
+           var bookImage = $scope.bookData[i].images;
             for (var j in bookAuthor) {
                 var author = bookAuthor[j].name;                
             }
             for (var k in bookGenre) {
                 var genre = bookGenre[k].name
+            }
+            for (var l in bookImage) {
+                var image = bookImage[k].imageUrl
             }
             if (bookId == id) {
                 console.log(bookAuthor, genre, bookIsbn, bookYear, bookDescription);

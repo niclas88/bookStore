@@ -16,12 +16,21 @@ app.controller("bookController", ["$scope", "book", "author", "genre", "image", 
     $scope.ratingData = rating.index(function (data) {
         console.log($scope.ratingData, "Rating");
     });
+    //for (var i in $scope.imageData.Id) {
+    //    var myId = $scope.imageData.Id[i];
+    //    console.log(myId);
+    //}
+
+    kek = function () {
+        console.log(JSON.stringify($scope.selectedBook), null, '\t');
+    }
 
 	var editBook;
 	var editDescription;	
 	//Get the id of the book being clicked	
-	$scope.getBookId = function(bookId){
-		$scope.bookId = bookId;
+	$scope.getBookId = function(bookId, bookIndex){
+	    $scope.bookId = bookId;
+	    $scope.selectedBook = $scope.bookData[bookIndex];
 		console.log(bookId);
 	}
 
