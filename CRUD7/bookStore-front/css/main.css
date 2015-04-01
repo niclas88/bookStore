@@ -1,82 +1,26 @@
 /*------------- -------------*/
-
-
 /*------------- BOOK VIEW -------------*/
-
-.bookTable > tbody > tr > td, .bookTable > thead > tr > th, p, h1, h2, h3, h4, h5, .modal-title{
+.bookTable > tbody > tr > td, .bookTable > thead > tr > th, p, h1, h2, h3, h4, h5, a, .modal-title{
   font-family: 'Lekton', sans-serif;
 }
-
 .bookTable > thead > tr > th {
   font-size: 30px;
 }
-
 .bookTable > tbody > tr > td{
   font-size: 16px;
   vertical-align: text-bottom;
 }
-
-@media only screen and (max-width: 800px) {
-#tiny-screen-tables table,
-#tiny-screen-tables thead,
-#tiny-screen-tables tbody,
-#tiny-screen-tables th,
-#tiny-screen-tables td,
-#tiny-screen-tables tr {
-display: block;
-}
- 
-#tiny-screen-tables thead tr {
-position: absolute;
-top: -9999px;
-left: -9999px;
-}
- 
-#tiny-screen-tables tr { border: 1px solid #ccc; }
- 
-#tiny-screen-tables td {
-border: none;
-border-bottom: 1px solid #eee;
-position: relative;
-padding-left: 50%;
-white-space: normal;
-text-align:left;
-}
- 
-#tiny-screen-tables td:before {
-position: absolute;
-top: 6px;
-left: 6px;
-width: 45%;
-padding-right: 10px;
-white-space: nowrap;
-text-align:left;
-font-size: 18px;
-}
- 
-#tiny-screen-tables td:before { 
-  content: attr(data-title); }
-}
-
-.italic {
-  font-style: italic;
-}
-
 /*------------- BOOK VIEW -------------*/
-
 /*------------- HEAD --------*/
-
 .menuFont, .title, .partialTitle {
   font-family: 'Stint Ultra Condensed', cursive;
 }
 .partialTitle {
   margin: 1px;
 }
-
 .title { /*hoeBag [buuk stohr]*/
   font-size: 80px;
 }
-
 .partialTitle { /*Authors: Books: Genres: Our top three:*/
   font-size: 60px;
   text-align: center;
@@ -84,13 +28,9 @@ font-size: 18px;
   margin-bottom: 10px;
   color: gray;
 }
-
-
 .navbar-form.navbar-right:last-child {
  margin-right: 18px;
 }
-
-
 /*Centering the navbar*/
 .center.navbar .nav {
   float:none;
@@ -99,38 +39,27 @@ font-size: 18px;
   *zoom:1; /* hasLayout ie7 trigger */
   vertical-align: top;
 }
-
 /*Changing style of navbar li*/
 .navbar-inverse .navbar-nav > li {
    color:white;
    font-size:30px;
    width:100px;
 }
-
 /*Underline all links on hover*/
 .navbar-inverse .navbar-nav > li > a:hover, .navbar-nav > li > a:focus{
    color:white;
    text-decoration:underline;
 }
-
 /*Make navbar transparent*/
 .navbar{
     background-color: transparent;
     background: transparent;
 }
-
 #nav a.highlite {
   color:white;
   font-family: 'Stint Ultra Condensed', cursive;
   font-size: 30px;
 }
-
-#tableBling a.bling{
-  color: black;
-  text-decoration: underline;
-  font-size: 30px;
-}
-
 /*Centering the menu title*/
 .menu{
   text-align:center;
@@ -138,20 +67,17 @@ font-size: 18px;
   background-image: url("img/grayBackground.jpg");
     color : gray;
 }
-
 .menubtnWrapper {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
 }
-
 .menubtnWrapper:after {
   content:"";
   display: block;
   clear: both;
 }
-
 /*Position social media buttons*/
 .a2a_kit {
   float: left;
@@ -159,11 +85,8 @@ font-size: 18px;
   margin-left: 2px;
   display: inline-block;
 }
-
 /*------------- HEAD -------------*/
-
 /*------------- BODY -------------*/
-
 body { 
   background: gray;
   -webkit-background-size: cover;
@@ -171,50 +94,38 @@ body {
   -o-background-size: cover;
   background-size: cover;
 }
-
 /*------------- BODY -------------*/
-
 /*------------- FOOTER -------------*/
 .footy {
   color: gray;
   background-image: url("img/grayBackground.jpg");
   padding: 10px;
   text-align: center;
-  
-
+  height: 130%;
+  width: 100%;
 }
 /*------------- FOOTER -------------*/
-
-/*---------------- BOOK MODAL -------------------*/
-
-.modalBookDetails{
-  float: right;
-  width: 100%; 
-  padding: 10px;
+/*---------------- BOOK DETAIL POP UP -------------------*/
+/*Set size of panel inside modal in bookDetails*/
+.panel{
+    width: 60%; 
 }
-
-.modalBookDescription {
-  padding: 10px;
+/*Position book cover in bookDetailView*/
+.bookCover
+{
+  position:fixed;
+  right:1%;
 }
-
-.modalBookImage {
-  max-width: 150px;
-  width: 100%;
-  height: auto;
-  max-height: 230px;
-  margin-bottom: 10px;
+/*Position the panel in bookView*/
+.center-panel{
+  position:relative;
+  width:100%;
 }
-
-.editLink {
-  float: left;
+/*Position Save button in bookEditView*/
+.saveButton{
+  position:right100%;
 }
-
-.modalEditTextArea {
-  margin-bottom: 15px;
-}
-
-/*---------------- BOOK MODAL -------------------*/
-
+/*---------------- BOOK DETAIL POP UP -------------------*/
 /*---------------- LOG IN / LOG OUT -------------------*/
 .modal-body, .modal-dialog, .panel-body{
   max-width: 500px;
@@ -232,9 +143,7 @@ body {
   margin-left: 10px
 }
 /*---------------- LOG IN / LOG OUT -------------------*/
-
 /*---------------- HOME VIEW -------------------*/
-
 .homeDiv, .homeDiv__body {
   overflow:hidden;
   _overflow:visible;
@@ -244,21 +153,17 @@ body {
   margin-left: 15px;
   color: black;
 }
-
 .homeBookDetails{ /*Title, author, publishing year */
   padding: 5px;
   background: linear-gradient(#3A3A3A, #B0B0B0);
   border-radius: 10px;
   border-color: black;
-
 }
-
 .homeRating{
   float: right;
   text-align: right;
   padding-right: 10px;
 }
-
 .homeBookDescription{
   padding: 10px;
   border: 1px solid;
@@ -266,26 +171,21 @@ body {
   background-color: white;
   word-wrap: break-word;
 }
-
 .homeReadMore{
   text-align: right;
   float: right;
   color: #1E2727;
 }
-
 .homeGenreText {
   font-style: italic;
 }
-
 .buttonBRC{
   float: right;
   position: relative;
 }
-
 .clearThis {
   clear: both;
 } 
-
 .homeBookCoverImage {
   float: left;
   max-width: 170px;
@@ -293,18 +193,7 @@ body {
   height: auto;
   margin-bottom: 5px;
 }
-
-.homeLink {
-    color: black;
-}
-
-.homeLink:hover {
-    color:white;
-    text-decoration: underline;
-}
-
 /*------------- AUTHOR, GENRE, HOME and BOOK divs -------------*/
-
 .authorDiv, .genreDiv, .homeDiv, .bookDiv, .authorDiv{
   margin-top: 20px;
   background-color: #E6E6E6;
@@ -317,12 +206,10 @@ body {
   border-radius: 10px;
   margin-bottom: 20px;
 }
-
 .accordion {
   width: 100%;
   background: white;
 }
-
 .accordion a {
   width:100%;
   display:block;
@@ -331,16 +218,11 @@ body {
   background: #B8B8B8;
 }
 /*------------- AUTHOR, GENRE, HOME and BOOK divs -------------*/
-
-
 /*------------- ADD VIEW -------------*/
-
-.scrollable-menuz {
+.scrollable-menu {
     height: auto;
     overflow-x: hidden;
-    max-height: 200px;
 }
-
 .whiteSurrounding {
   background: transparent;
   background-color: transparent;
@@ -354,7 +236,6 @@ body {
   margin-left: auto;
   margin-right: auto;
 }
-
 .viewTitles {
   font-family: 'Times new roman', cursive;
   font-size: 30px;
@@ -365,20 +246,16 @@ body {
   top:0px;
   margin-bottom: 20px;
 }
-
 /*------------- ADD VIEW -------------*/
-
 /*------------- RATING -------------*/
 .rating{
   color: #A0A0A0;
   margin: 0;
   padding: 0;
 }
-
 ul.rating {
   display: inline-block;
 }
-
 .rating li {
   list-style-type: none;
   display: inline-block;
@@ -387,30 +264,7 @@ ul.rating {
   font-weight: bold;
   cursor: pointer;
 }
-
 .rating .filled {
   color: green;
 }
-
 /*------------- RATING -------------*/
-
-
-
-
-html, body {
-  height: 100%;
-}
-
-main {
-  min-height: 100%;
-  /* equal to footer height */
-  margin-bottom: -120px; 
-}
-main:after {
-  content: "";
-  display: block;
-}
-footer, main:after {
-  /* .push must be the same height as footer */
-  height: 120px; 
-}

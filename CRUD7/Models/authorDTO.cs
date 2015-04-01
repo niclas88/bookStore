@@ -10,6 +10,10 @@ namespace CRUD7.Models
         public int Id { get; set; }
         public string name { get; set; }
 
-        public List<string> books { get; set; }
+        //public authorDTO(int Id, string name)
+        //{
+        //    this.Id = Id;
+        //    this.name = name;
+        //}
     }
 }

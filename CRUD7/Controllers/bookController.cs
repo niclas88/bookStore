@@ -66,39 +66,7 @@ namespace CRUD7.Controllers
 
             return Books;
         }
-        //public List<authorDTO> GetAuthors()
-        //{
-        //    // Get all books using a LINQ question
-        //    // collect them in rawBooks
-        //    // (Please note: Method calls can not be done in a LINQ question)
-        //    var rawAuthors =
-        //       from a in db.authors
-        //       select new authorDTOtemp()
-        //       {
-        //           Id = a.Id,
-        //           name = a.name
-        //       };
 
-        //    // Now loop through our rawBooks (a list of BookDTOtemp objects)
-        //    // and create a list of BookDTO objects
-        //    // use the helper funtion getAuthorNames to transform
-        //    // a list of authors to a list of authornames (strings)
-        //    var Authors = new List<authorDTO>();
-        //    foreach (var author in rawAuthors)
-        //    {
-        //        Authors.Add(
-        //            new authorDTO()
-        //            {
-        //                Id = author.Id,
-        //                name = author.name,
-        //                books = getBookNames(author.books),
-        //            }
-
-        //        );
-        //    }
-
-        //    return Authors;
-        //}
         private List<string> getBookNames(ICollection<book> books)
         {
             var bookNames = new List<string>();
@@ -223,6 +191,7 @@ namespace CRUD7.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
+
         // POST api/Books
         [ResponseType(typeof(book))]
         public IHttpActionResult PostBook(bookPostDTO bookInput)
@@ -232,13 +201,26 @@ namespace CRUD7.Controllers
                 return BadRequest(ModelState);
             }
 
-
             // Now lookup the authors, genres, images and ratings in the DB
             var authorsInBookInput =
                 (from a in db.authors
                  where bookInput.authorIds.Contains(a.Id)
                  select a).ToList();
             // Now genres, images and ratings remain
+            var genresInBookInput =
+                (from a in db.genres
+                 where bookInput.authorIds.Contains(a.Id)
+                 select a).ToList();
+
+            var imagesInBookInput =
+                (from a in db.images
+                 where bookInput.authorIds.Contains(a.Id)
+                 select a).ToList();
+
+            var ratingsInBookInput =
+                (from a in db.ratings
+                 where bookInput.authorIds.Contains(a.Id)
+                 select a).ToList();
 
             var book = new book()
             {
@@ -247,7 +229,10 @@ namespace CRUD7.Controllers
                 description = bookInput.description,
                 isbn = bookInput.isbn,
                 stock = bookInput.stock,
-                authors = authorsInBookInput
+                authors = authorsInBookInput,
+                genres = genresInBookInput,
+                images = imagesInBookInput,
+                ratings = ratingsInBookInput
             };
          
 

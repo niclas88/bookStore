@@ -12,6 +12,7 @@ namespace CRUD7.Models
         public int year { get; set; }
         public int stock { get; set; }
         public string isbn { get; set; }
+        public List<string> bookAuthorBookTitle { get; set; }
         public ICollection<author> authors { get; set; }
         public ICollection<genre> genres { get; set; }
         public ICollection<image> images { get; set; }
