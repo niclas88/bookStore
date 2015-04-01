@@ -27,25 +27,53 @@ app.controller("addController", ["$scope", "book", "author", "genre", "$location
 
         //$http.post("someurl", $scope.newBookData);
 
-        if (!$scope.newBookData.author || !$scope.newBookData.title || !$scope.newBookData.genre || !$scope.newBookData.isbn || !$scope.newBookData.published || !$scope.newBookData.description) {
+        if (!$scope.newBookData.authors || !$scope.newBookData.title || !$scope.newBookData.genre || !$scope.newBookData.isbn || !$scope.newBookData.year || !$scope.newBookData.description) {
             $scope.alerts.push({ type: 'danger', msg: 'Enter all the credentials, fker.' })
 
             $scope.newBookData = {};
             console.log("Some fields weren't filled in. newBookData = ", $scope.newBookData)
         }
         else {
-            console.log("newBookData: ", $scope.newBookData);
-            console.log("Created new author", $scope.newBookData);
-            book.create($scope.newBookData);
+ 
+            //THomas kod för att sparade authorId i authorIds för att koppla författare till bokobjekt
+            var toSave = {authorIds:[]};
+            for (var i in $scope.newBookData) {
+                if (i == "authors" || i == "id") { continue;}
+                toSave[i] = $scope.newBookData[i];
+            }
+            var as = $scope.newBookData.authors;
+            for (var i = 0; i < as.length; i++) {
+                toSave.authorIds.push(as[i].Id);
+            }
+            console.log("The backend friendly book", toSave);
+            book.create(toSave);
         }
     };
 
+    // Skapa samma för genre etc...
+    var authorId;
+    $scope.newBookData.authors = [];
+    $scope.newBookDataPresentation = {}
 
+    $scope.authorSelect = function (authIndex, id) {
+        //console.log("User selected author: ", $scope.authorData[authIndex].name);
+        $scope.newBookData.authors.push($scope.authorData[authIndex]);
+        //console.log("selectedAuthor: ", $scope.newBookData.authors);
+        $scope.newBookDataPresentation.authors = "";
+        for (var i = 0; i < $scope.newBookData.authors.length; i++) {
+            i > 0 && ($scope.newBookDataPresentation.authors += ", ");
+            $scope.newBookDataPresentation.authors += $scope.newBookData.authors[i].name;
+        }
+        
 
-    $scope.authorSelect = function (authIndex) {
-        console.log("User selected author: ", $scope.authorData[authIndex].name);
-        $scope.newBookData.author = $scope.authorData[authIndex].name;
-        console.log("selectedAuthor: ", $scope.newBookData.author);
+        /*for (var i in $scope.authorData) {
+            authorId = $scope.authorData[i].Id;
+
+            if (authorId == id) {
+                console.log("if-sats");
+                console.log(authorId);
+            }
+        }*/
     }
 
     $scope.$watch("selectedAuthor", function (newVal, oldVal) {
@@ -63,7 +91,7 @@ app.controller("addController", ["$scope", "book", "author", "genre", "$location
         console.log("selectedGenre changed from ", oldVal, " to ", newVal);
     })
 
-
+    //This happens when you click Existing Title
     $scope.titleSelect = function (titleIndex, id) {
         console.log("User selected title: ", $scope.bookData[titleIndex].title);
         $scope.newBookData.title = $scope.bookData[titleIndex].title;
@@ -76,7 +104,6 @@ app.controller("addController", ["$scope", "book", "author", "genre", "$location
            var bookIsbn = $scope.bookData[i].isbn;
            var bookYear = $scope.bookData[i].year;
            var bookDescription = $scope.bookData[i].description;
-
             for (var j in bookAuthor) {
                 var author = bookAuthor[j].name;                
             }
@@ -84,16 +111,16 @@ app.controller("addController", ["$scope", "book", "author", "genre", "$location
                 var genre = bookGenre[k].name
             }
             if (bookId == id) {
-                console.log(author, genre, bookIsbn, bookYear, bookDescription);
-                $scope.newBookData.author = author;
+                console.log(bookAuthor, genre, bookIsbn, bookYear, bookDescription);
+                $scope.newBookDataPresentation.authors = author;
                 $scope.newBookData.genre = genre;
-                $scope.newBookData.published = bookYear;
+                $scope.newBookData.year = bookYear;
                 $scope.newBookData.isbn = bookIsbn;
                 $scope.newBookData.description = bookDescription;
                
                 idToDelete = $scope.bookData[i].Id;
                 console.log(idToDelete);
-            }            
+            }
         }
     }
     $scope.delete = function () {

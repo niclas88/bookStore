@@ -160,6 +160,7 @@
     <Compile Include="Models\bookDetailDTOtemp.cs" />
     <Compile Include="Models\bookDTO.cs" />
     <Compile Include="Models\bookDTOtemp.cs" />
+    <Compile Include="Models\BookPostDTO.cs" />
     <Compile Include="Models\CRUD7Context.cs" />
     <Compile Include="Models\genre.cs" />
     <Compile Include="Models\image.cs" />

@@ -225,16 +225,35 @@ namespace CRUD7.Controllers
 
         // POST api/Books
         [ResponseType(typeof(book))]
-        public IHttpActionResult PostBook(book book)
+        public IHttpActionResult PostBook(bookPostDTO bookInput)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
+
+            // Now lookup the authors, genres, images and ratings in the DB
+            var authorsInBookInput =
+                (from a in db.authors
+                 where bookInput.authorIds.Contains(a.Id)
+                 select a).ToList();
+            // Now genres, images and ratings remain
+
+            var book = new book()
+            {
+                title = bookInput.title,
+                year = bookInput.year,
+                description = bookInput.description,
+                isbn = bookInput.isbn,
+                stock = bookInput.stock,
+                authors = authorsInBookInput
+            };
+         
+
             db.books.Add(book);
             db.SaveChanges();
-
+            //Skapa nya DTO:er för att skicka tillbaka
             return CreatedAtRoute("DefaultApi", new { id = book.Id }, book);
         }
 
