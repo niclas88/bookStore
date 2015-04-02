@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="homeDiv__body ">
                     <div>
-                        <a href="#/bookDetalView">
+                        <a data-toggle="modal" id="book.Id" data-target="#myModal" ng-click="getBookId(book.Id, $index)">
                             <img class="clearThis homeBookCoverImage col-lg-2 col-md-2 col-sm-2 col-xs-12" ng-repeat="image in book.images" ng-src="{{image.imageUrl}}" />
                         </a>
                     </div>
@@ -14,11 +14,11 @@
                         <div class="homeBookDetails col-xs-12 col-sm-9 col-md-9 col-lg-10">
                             <h1>{{book.title}} <p class="homeRating">{{book.rating}}</p></h1>
 
-                            <h3>By: <a class="homeLink" href="#/allBooksByThisAuthor" ng-repeat="author in book.authorNames">{{author.name}}</a></h3>
+                            <h3 ng-controller="menuController">By: <a class="homeLink" ng-click="goTo('/authors')" ng-repeat="author in book.authorNames">{{author.name}}</a></h3>
 
                             <h4>{{book.year}}</h4>
 
-                            <h4 class="homeGenreText"><a class="homeLink" href="#/genres" ng-repeat="genre in book.genreNames">{{genre.name}}</a></h4>
+                            <h4 class="homeGenreText" ng-controller="menuController"><a class="homeLink" ng-click="goTo('/genres')" ng-repeat="genre in book.genreNames">{{genre.name}}</a></h4>
 
                             <div class="homeBookDescription">
 
