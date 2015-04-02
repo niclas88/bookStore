@@ -1,4 +1,4 @@
-app.controller("addController", ["$scope", "book", "author", "genre", "$location", function ($scope, book, author, genre, $location) {
+app.controller("addController", ["$scope", "book", "author", "genre", "image", "$location", function ($scope, book, author, genre, image, $location) {
     console.log("addController is working");
     $scope.newBookData = {};
 
@@ -15,6 +15,9 @@ app.controller("addController", ["$scope", "book", "author", "genre", "$location
     $scope.genreData = genre.index(function (data) {
         console.log($scope.genreData, "Genres");
     });
+    $scope.imageData = image.index(function (data) {
+        console.log($scope.imageData, "Images");
+    });
 
 
 
@@ -27,7 +30,7 @@ app.controller("addController", ["$scope", "book", "author", "genre", "$location
 
         //$http.post("someurl", $scope.newBookData);
 
-        if (!$scope.newBookData.authors || !$scope.newBookData.title || !$scope.newBookData.genre || !$scope.newBookData.isbn || !$scope.newBookData.year || !$scope.newBookData.description) {
+        if (!$scope.newBookData.authors || !$scope.newBookData.title || !$scope.newBookData.genres || !$scope.newBookData.isbn || !$scope.newBookData.year || !$scope.newBookData.description) {
             $scope.alerts.push({ type: 'danger', msg: 'Enter all the credentials, fker.' })
 
             $scope.newBookData = {};
@@ -82,11 +85,11 @@ app.controller("addController", ["$scope", "book", "author", "genre", "$location
     })
 
     $scope.newBookData.genres = [];
-    $scope.newBookDataPresentation = {}
+    $scope.newBookDataPresentation = {};
 
     $scope.genreSelect = function (genreIndex) {
         console.log("User selected genre: ", $scope.genreData[genreIndex].name);
-        $scope.newBookData.authors.push($scope.authorData[genreIndex]);
+        $scope.newBookData.genres.push($scope.genreData[genreIndex]);
 
         $scope.newBookDataPresentation.genres = "";
         for (var i = 0; i < $scope.newBookData.genres.length; i++) {
@@ -97,7 +100,7 @@ app.controller("addController", ["$scope", "book", "author", "genre", "$location
     }
     $scope.newBookData.images = [];
     $scope.newBookDataPresentation = {}
-
+    
     $scope.imageSelect = function (imageIndex) {
         console.log("User selected image: ", $scope.imageData[imageIndex].imageUrl);
         $scope.newBookData.images.push($scope.imageData[imageIndex]);
@@ -116,7 +119,9 @@ app.controller("addController", ["$scope", "book", "author", "genre", "$location
 
     //This happens when you click Existing Title
     $scope.titleSelect = function (titleIndex, id) {
-        console.log("User selected title: ", $scope.bookData[titleIndex].title);
+        //$scope.newBookData.authors.push($scope.bookData.authorNames);
+        //$scope.newBookData.genres.push($scope.bookData.genreNames);
+        
         $scope.newBookData.title = $scope.bookData[titleIndex].title;
         console.log("selectedTitle: ", $scope.newBookData.title);
 
@@ -129,22 +134,28 @@ app.controller("addController", ["$scope", "book", "author", "genre", "$location
            var bookDescription = $scope.bookData[i].description;
            var bookImage = $scope.bookData[i].images;
             for (var j in bookAuthor) {
-                var author = bookAuthor[j].name;                
+                var author = bookAuthor[j];                
             }
             for (var k in bookGenre) {
-                var genre = bookGenre[k].name
+                var genre = bookGenre[k];
             }
             for (var l in bookImage) {
                 var image = bookImage[k].imageUrl
             }
+
             if (bookId == id) {
                 console.log(bookAuthor, genre, bookIsbn, bookYear, bookDescription);
-                $scope.newBookDataPresentation.authors = author;
-                $scope.newBookData.genre = genre;
+                $scope.newBookData.authors.push(author);
+                $scope.newBookDataPresentation.authors = author.name;
+                $scope.newBookData.genres.push(genre);
+                $scope.newBookDataPresentation.genres = genre.name;
                 $scope.newBookData.year = bookYear;
                 $scope.newBookData.isbn = bookIsbn;
                 $scope.newBookData.description = bookDescription;
+                $scope.newBookDataPresentation.images = image;
                
+                console.log("User selected things: ", $scope.newBookData);
+
                 idToDelete = $scope.bookData[i].Id;
                 console.log(idToDelete);
             }

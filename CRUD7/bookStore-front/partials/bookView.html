@@ -17,7 +17,7 @@
                         <tbody>
                             <tr ng-repeat="book in bookData">
                                 <td>
-                                    <a data-toggle="modal" id="{{book.Id}}" data-target="#myModal" ng-click="getBookId(book.Id)">
+                                    <a data-toggle="modal" id="{{book.Id}}" data-target="#myModal" ng-click="getBookId(book.Id, $index)">
                                         {{book.title}}
                                     </a>
                                 </td>
