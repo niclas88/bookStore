@@ -1,4 +1,4 @@
-app.controller("searchController", ["$scope", "$http", "$rootScope", "$routeParams", "$location", function($scope, $http, $rootScope, $routeParams, $location){
+app.controller("searchController", ["$scope", "book", "$rootScope", "$routeParams", "$location", function($scope, book, $rootScope, $routeParams, $location){
   
 	
 	$scope.filterOptions = ["all", "genre", "author", "title"];
@@ -10,19 +10,17 @@ app.controller("searchController", ["$scope", "$http", "$rootScope", "$routePara
   }
 	
   $scope.searchFilterResult = [];
-    console.log("searchController alive.");
-    $http
-    .get("data/bookData.json")
-    .success(function(data){
-      console.log("Got dummydata", data)
-      $scope.bookData = data;
+  console.log("searchController alive.");
+
+    $scope.bookData = book.index(function (data) {
+        console.log($scope.bookData,"BOOKS");
+    });
 			
 			// add a new property that mashes all properties
 			// into one string in order to make filter = all work
-			data.forEach(function(book){
+    $scope.bookData.forEach(function (book) {
 				book.all = book.author + " " + book.genre + " " + book.title;
-			});
-			
+
     });
 
 		//$rootScope.$watch("query",function(x){console.log("query",x)});

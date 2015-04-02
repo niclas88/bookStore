@@ -8,6 +8,8 @@ namespace CRUD7.Models
         public int Id { get; set; }
         [Required]
         public double rate { get; set; }
+        public int voteCount { get; set; }
+        public int totalRating { get; set; }
         public ICollection<book> Books { get; set; }
         public rating()
         {

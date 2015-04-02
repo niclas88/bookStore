@@ -9,7 +9,7 @@
 				    <tbody>
 				    	<p>Books by this author:</p>
                         <td>
-                            <a ng-repeat="book in bookData" data-toggle="modal" data-target="#myModal" ng-click="getBookId(book.Id)">
+                            <a ng-repeat="book in bookData" data-toggle="modal" data-target="#myModal" ng-click="getBookId(book.Id, $index)">
                                 <div ng-repeat="authorName in book.authorNames" ng-if="author.name == authorName.name">
                                     {{book.title}}
                                 </div>

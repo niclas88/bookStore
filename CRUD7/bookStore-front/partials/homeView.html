@@ -2,7 +2,7 @@
     <div class="homeDiv">
         <div class="partialTitle row" ng-controller="bookController">Our top three:</div>
         <div modal="opened" ng-include src="'partials/modalView.html'"></div>
-        <div ng-repeat="book in bookData">
+        <div ng-repeat="book in bookData | limitTo: 3">
             <div class="row">
                 <div class="homeDiv__body ">
                     <div>

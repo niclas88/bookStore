@@ -7,11 +7,16 @@ app.controller("authorController", ["$scope", "author", "book", function($scope,
         console.log($scope.bookData, "BOOKS");
     });
 
+    kek = function () {
+        console.log(JSON.stringify($scope.selectedBook), null, '\t');
+    }
     //Get the id of the book being clicked	
-    $scope.getBookId = function (bookId) {
+    $scope.getBookId = function (bookId, bookIndex) {
         $scope.bookId = bookId;
+        $scope.selectedBook = $scope.bookData[bookIndex];
         console.log(bookId);
     }
+    
     $scope.readMore = function () {
         $scope.more = !$scope.more;
         $scope.summary = !$scope.summary;

@@ -25,12 +25,51 @@ app.controller("addController", ["$scope", "book", "author", "genre", "image", "
         $location.url(path);
     }
 
+    $scope.edit = function () {
+
+        book.destroy({ id: idToDelete });
+
+        var toSave = { 
+            authorIds: [], 
+            genreIds: [], 
+            imagesIds: []
+        };
+
+        for (var i in $scope.newBookData) {
+            if (i == "authors" || i == "id" || i == "genres" || i == "images") { continue; }
+            toSave[i] = $scope.newBookData[i];
+        }
+        var as = $scope.newBookData.authors;
+
+        for (var i = 0; i < as.length; i++) {
+            toSave.authorIds.push(as[i].Id);
+        }
+        var aa = $scope.newBookData.genres;
+
+        for (var i in aa) {
+            toSave.genreIds.push(aa[i].Id);
+        }
+            
+        var ai = $scope.newBookData.images;
+        for (var i = 0; i < ai.length; i++) {
+            toSave.imagesIds.push(ai[i].Id);
+        }
+        console.log("The backend friendly book", toSave);
+        book.create(toSave);
+        $scope.newBookDataPresentation = {};
+        $scope.newBookData = {};
+        
+    }
+
     $scope.save = function () {
         console.log("newBookData: ", $scope.newBookData);
 
         //$http.post("someurl", $scope.newBookData);
 
-        if (!$scope.newBookData.authors || !$scope.newBookData.title || !$scope.newBookData.genres || !$scope.newBookData.isbn || !$scope.newBookData.year || !$scope.newBookData.description) {
+        if (!$scope.newBookData.authors || !$scope.newBookData.title ||
+            !$scope.newBookData.genres || !$scope.newBookData.isbn ||
+            !$scope.newBookData.year || !$scope.newBookData.description ||
+            !$scope.newBookDataPresentation.images) {
             $scope.alerts.push({ type: 'danger', msg: 'Enter all the credentials, fker.' })
 
             $scope.newBookData = {};
@@ -39,17 +78,35 @@ app.controller("addController", ["$scope", "book", "author", "genre", "image", "
         else {
  
             //THomas kod för att sparade authorId i authorIds för att koppla författare till bokobjekt
-            var toSave = {authorIds:[]};
+            var toSave = { 
+                authorIds: [], 
+                genreIds: [], 
+                imagesIds: []
+            };
+
             for (var i in $scope.newBookData) {
-                if (i == "authors" || i == "id") { continue;}
+                if (i == "authors" || i == "id" || i == "genres" || i == "images") { continue; }
                 toSave[i] = $scope.newBookData[i];
             }
             var as = $scope.newBookData.authors;
+
             for (var i = 0; i < as.length; i++) {
                 toSave.authorIds.push(as[i].Id);
             }
+            var aa = $scope.newBookData.genres;
+
+            for (var i in aa) {
+                toSave.genreIds.push(aa[i].Id);
+            }
+            
+            var ai = $scope.newBookData.images;
+            for (var i = 0; i < ai.length; i++) {
+                toSave.imagesIds.push(ai[i].Id);
+            }
             console.log("The backend friendly book", toSave);
             book.create(toSave);
+            $scope.newBookDataPresentation = {};
+            $scope.newBookData = {};
         }
     };
         
@@ -140,7 +197,7 @@ app.controller("addController", ["$scope", "book", "author", "genre", "image", "
                 var genre = bookGenre[k];
             }
             for (var l in bookImage) {
-                var image = bookImage[k].imageUrl
+                var image = bookImage[k];
             }
 
             if (bookId == id) {
@@ -152,7 +209,9 @@ app.controller("addController", ["$scope", "book", "author", "genre", "image", "
                 $scope.newBookData.year = bookYear;
                 $scope.newBookData.isbn = bookIsbn;
                 $scope.newBookData.description = bookDescription;
-                $scope.newBookDataPresentation.images = image;
+                $scope.newBookData.images.push(image);
+                $scope.newBookDataPresentation.images = image.imageUrl;
+                
                
                 console.log("User selected things: ", $scope.newBookData);
 

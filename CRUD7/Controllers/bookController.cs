@@ -209,12 +209,12 @@ namespace CRUD7.Controllers
             // Now genres, images and ratings remain
             var genresInBookInput =
                 (from a in db.genres
-                 where bookInput.authorIds.Contains(a.Id)
+                 where bookInput.genreIds.Contains(a.Id)
                  select a).ToList();
 
             var imagesInBookInput =
                 (from a in db.images
-                 where bookInput.authorIds.Contains(a.Id)
+                 where bookInput.imagesIds.Contains(a.Id)
                  select a).ToList();
 
             var ratingsInBookInput =
