@@ -144,6 +144,7 @@
     <Compile Include="Controllers\homeController.cs" />
     <Compile Include="Controllers\imageController.cs" />
     <Compile Include="Controllers\ratingController.cs" />
+    <Compile Include="Controllers\usersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -165,6 +166,7 @@
     <Compile Include="Models\genre.cs" />
     <Compile Include="Models\image.cs" />
     <Compile Include="Models\rating.cs" />
+    <Compile Include="Models\users.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -252,6 +254,7 @@
     <Content Include="bookStore-front\js\controllers\.DS_Store" />
     <Content Include="bookStore-front\partials\.DS_Store" />
     <Content Include="bookStore-front\README.md" />
+    <Content Include="bookStore-front\data\userData.json" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -313,6 +316,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
+      <UserProperties bookStore-front_2data_2userData_1json__JSONSchema="" />
     </VisualStudio>
   </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

@@ -28,6 +28,8 @@ namespace CRUD7.Models
         public System.Data.Entity.DbSet<CRUD7.Models.image> images { get; set; }
 
         public System.Data.Entity.DbSet<CRUD7.Models.rating> ratings { get; set; }
+
+        public System.Data.Entity.DbSet<CRUD7.Models.users> users { get; set; }
     
     }
 }
