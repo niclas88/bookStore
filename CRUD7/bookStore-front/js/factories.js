@@ -25,3 +25,6 @@ app.factory("image", ["$resource", function ($resource) {
 app.factory("rating", ["$resource", function ($resource) {
     return $resource("/api/rating/:id", { id: "@id" }, standardMethods);
 }]);
+app.factory("users", ["$resource", function ($resource) {
+    return $resource("/api/users/:id", { id: "@id" }, standardMethods);
+}]);
