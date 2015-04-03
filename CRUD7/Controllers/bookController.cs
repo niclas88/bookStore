@@ -57,10 +57,8 @@ namespace CRUD7.Controllers
                         authorNames = getAuthorNames(book.authors),
                         genreNames = getGenreNames(book.genres),
                         images = getImage(book.bookImages),
-                        ratings = getRating(book.bookRatings)
-                        
+                        ratings = getRating(book.bookRatings)   
                     }
-
                 );
             }
 

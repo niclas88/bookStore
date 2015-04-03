@@ -10,7 +10,6 @@ namespace CRUD7.Models
         public int Id { get; set; }
         public string title { get; set; }
         public int year { get; set; }
-
         public int stock { get; set; }
         public string isbn { get; set; }
         public string description { get; set; }
