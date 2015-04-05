@@ -1,3 +1,5 @@
+
+
 app.controller("addAuthorController", ["$scope", "author", "$location", function ($scope, author, $location) {
     console.log("Controller is working");
     $scope.newAuthorData = {};
@@ -32,22 +34,35 @@ app.controller("addAuthorController", ["$scope", "author", "$location", function
             console.log("newAuthorData: ", $scope.newAuthorData);
             console.log("Created new author", $scope.newAuthorData);
             author.create($scope.newAuthorData);
+            $scope.newAuthorData = {};
         }
     }
 
     $scope.delete = function () {
-        //i do nothing yet....
+        author.destroy({ id: idToDelete });
+        $scope.newAuthorData = {};
     };
 
 
-    $scope.authorSelect = function (authIndex) {
-        console.log("User selected author: ", $scope.authorData[authIndex].name);
+
+
+    $scope.authorSelect = function (authIndex, id) {
+        //$scope.newBookData.authors.push($scope.bookData.authorNames);
+        //$scope.newBookData.genres.push($scope.bookData.genreNames);
+
         $scope.newAuthorData.name = $scope.authorData[authIndex].name;
         console.log("selectedAuthor: ", $scope.newAuthorData.author);
+
+        for (var i in $scope.authorData) {
+            var authorId = $scope.authorData[i].Id;
+
+            if (authorId == id) {
+
+                console.log("User selected things: ", $scope.newAuthorData);
+
+                idToDelete = $scope.authorData[i].Id;
+                console.log(idToDelete);
+            }
+        }
     }
-
-
-
-
-    }]);
-
+}]);
