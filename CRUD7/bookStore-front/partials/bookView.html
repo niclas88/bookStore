@@ -15,7 +15,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="book in bookData | filter: query">
+                            <tr ng-repeat="book in bookData">
                                 <td>
                                     <a data-toggle="modal" id="{{book.Id}}" data-target="#myModal" ng-click="getBookId(book.Id, $index)">
                                         {{book.title}}
