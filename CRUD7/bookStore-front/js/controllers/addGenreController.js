@@ -1,4 +1,4 @@
-app.controller("addGenreController", ["$scope", "genre", "$location", function ($scope, genre, $location) {
+﻿app.controller("addGenreController", ["$scope", "genre", "$location", function ($scope, genre, $location) {
     console.log("addGenreController is working");
     $scope.newGenreData = {};
 
@@ -32,27 +32,62 @@ app.controller("addGenreController", ["$scope", "genre", "$location", function (
             console.log("newGenreData: ", $scope.newGenreData);
             console.log("Created new genre", $scope.newGenreData);
             genre.create($scope.newGenreData);
+
+            $scope.ńewGenreData = {};
+
+
+
         }
     }
 
     $scope.delete = function () {
-        //i do nothing yet....
+        console.log("Hej nu ska jag ta bort: ", idToDelete)
+        genre.destroy({ id: idToDelete });
+        $scope.newGenreData = {};
     };
 
 
 
-    $scope.genreSelect = function (genreIndex) {
-        console.log("User selected genre: ", $scope.genreData[genreIndex].name);
-        $scope.newGenreData.name = $scope.genreData[genreIndex].name;
-        console.log("selectedGenre: ", $scope.newGenreData.genre);
+     $scope.edit = function () {
+
+         genre.update({
+             id: idToDelete,
+             name: $scope.newGenreData.name,
+             description: $scope.newGenreData.description
+         });
+
+        $scope.newGenreData = {};
+        
     }
-    console.log("HEJ", $scope)
-
-    $scope.$watch("selectedGenre", function (newVal, oldVal) {
-        console.log("selectedGenre changed from ", oldVal, " to ", newVal);
-    })
 
 
+    $scope.genreSelect = function (genreIndex, id) {
+        //$scope.newBookData.authors.push($scope.bookData.authorNames);
+        //$scope.newBookData.genres.push($scope.bookData.genreNames);
+
+        $scope.newGenreData.name = $scope.genreData[genreIndex].name;
+        console.log("selectedGenre: ", $scope.newGenreData.name);
+
+
+
+
+        for (var i in $scope.genreData) {
+            var genreId = $scope.genreData[i].Id;
+            var genreDescription = $scope.genreData[i].description
+
+            
+            if (genreId == id) {
+                $scope.newGenreData.description = genreDescription;
+                console.log("User selected things: ", $scope.newGenreData);
+
+                idToDelete = $scope.genreData[i].Id;
+                console.log(idToDelete);
+
+
+            }
+        }
+    }
+    
 }]);
 
 
