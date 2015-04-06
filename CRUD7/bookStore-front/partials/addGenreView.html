@@ -12,7 +12,7 @@
 
                         <div class="btn-group input-group form-group" dropdown is-open="status.isopen">
                             <button type="button" class="btn btn-primary dropdown-toggle" dropdown-toggle ng-disabled="disabled">
-                                Add/remove books
+                                What would you like to do?
                             </button>
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="" ng-click="goTos('/addAuthor')">Add/remove authors</a></li>
@@ -47,7 +47,7 @@
 
                         <button type="add" class="btn btn-default" ng-click="save()">{{saveBtnText}}</button>
                         <button ng-if="canDelete" type="remove" class="btn btn-default" ng-click="delete()">Remove from database</button>
-                            <button type="edit" class="btn btn-default" ng-click="edit()">Edit book</button>
+                            <button type="edit" class="btn btn-default" ng-click="edit()">Edit genre</button>
             </div>
         </div>
 

@@ -22,8 +22,8 @@
 
         //$http.post("someurl", $scope.newBookData);
 
-        if (!$scope.newGenreData.name) {
-            $scope.alerts.push({ type: 'danger', msg: 'Enter all the credentials, fker.' })
+        if (!$scope.newGenreData.name || !$scope.newGenreData.description) {
+            $scope.alerts.push({ type: 'danger', msg: 'Enter something in all fields.' })
 
             $scope.newGenreData = {};
             console.log("Some fields weren't filled in. newGenreData = ", $scope.newGenreData)
