@@ -1,4 +1,4 @@
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" ng-controller="bookController">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -45,11 +45,11 @@
                         </ul>
                         <a class="saveButton" href="" ng-show="showSave" ng-click="saveData()">save</a>
                     </div>
-                    <a href="" ng-show="showEdit" ng-click="editBook()">edit</a>
+                    <a href="" ng-hide="showEdit" ng-click="editBook()">edit</a>
                 </div>
                 <div class="panel panel-default">
                     <div class="panel-body" ng-repeat="book in bookData" ng-if="book.Id == bookId">
-                        <a href="" ng-show="showTxtEdit">edit</a>
+                        <a href="" ng-hide="showTxtEdit">edit</a>
                         <p ng-hide="summary">{{book.description | limitTo: 150}}</p>
                         <p ng-show="more">{{book.description}}</p>
                     </div><a href="" ng-click="readMore()">read more</a>

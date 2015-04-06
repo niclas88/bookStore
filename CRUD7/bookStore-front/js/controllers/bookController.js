@@ -1,5 +1,4 @@
 app.controller("bookController", ["$scope", "book", "author", "genre", "image", "rating", function ($scope, book, author, genre, image, rating) {
-    console.log("bookController is working");
 	
     $scope.bookData = book.index(function (data) {
         console.log($scope.bookData,"BOOKS");
@@ -25,12 +24,12 @@ app.controller("bookController", ["$scope", "book", "author", "genre", "image", 
         console.log(JSON.stringify($scope.selectedBook), null, '\t');
     }
 
-	var editBook;
-	var editDescription;	
+	//var idToDelete;
 	//Get the id of the book being clicked	
 	$scope.getBookId = function(bookId, bookIndex){
 	    $scope.bookId = bookId;
 	    $scope.selectedBook = $scope.bookData[bookIndex];
+	    idToDelete = bookId;
 		console.log(bookId);
 	}
 
@@ -40,31 +39,9 @@ app.controller("bookController", ["$scope", "book", "author", "genre", "image", 
 	}
 
 	$scope.editBook = function(){
-		$scope.showDetailWindow = !$scope.showDetalWindow;
-		$scope.editBookView = !$scope.editBookView;
-		$scope.showEdit = !$scope.showEdit;
+		//$scope.showDetailWindow = !$scope.showDetalWindow;
+		//$scope.editBookView = !$scope.editBookView;
+		//$scope.showEdit = !$scope.showEdit;
 	}
-	$scope.saveData = function(){
-		$scope.showDetailWindow = !$scope.showDetailWindow;
-		$scope.editBookView = !$scope.editBookView;
-		$scope.showEdit = !$scope.showEdit;
-	}
-
-	// $scope.books = Book.index();
-	/*
-	$scope.getBookRating = function(bookRating){
-		$scope.bookRating = bookRating;
-		console.log(bookRating);
-	}
-	*/
 }]);
 
-//$http
-//	.get("data/bookData.json")
-//	.success(function(data){
-//		console.log("Got dummydata", data);
-//		data.forEach(function(book){
-//			book.all = book.author + " " + book.genre + " " + book.title;
-//		});
-//		$scope.bookData = data;
-//});

@@ -1,5 +1,4 @@
 app.controller("addController", ["$scope", "book", "author", "genre", "image", "$location", function ($scope, book, author, genre, image, $location) {
-    console.log("addController is working");
     $scope.newBookData = {};
 
     $scope.formTitle = "Please enter book credentials";
@@ -122,30 +121,17 @@ app.controller("addController", ["$scope", "book", "author", "genre", "image", "
     };
         
 
-    // Skapa samma för genre etc...
     var authorId;
     $scope.newBookData.authors = [];
     $scope.newBookDataPresentation = {}
 
     $scope.authorSelect = function (authIndex, id) {
-        //console.log("User selected author: ", $scope.authorData[authIndex].name);
         $scope.newBookData.authors.push($scope.authorData[authIndex]);
-        //console.log("selectedAuthor: ", $scope.newBookData.authors);
         $scope.newBookDataPresentation.authors = "";
         for (var i = 0; i < $scope.newBookData.authors.length; i++) {
             i > 0 && ($scope.newBookDataPresentation.authors += ", ");
             $scope.newBookDataPresentation.authors += $scope.newBookData.authors[i].name;
         }
-        
-
-        /*for (var i in $scope.authorData) {
-            authorId = $scope.authorData[i].Id;
-
-            if (authorId == id) {
-                console.log("if-sats");
-                console.log(authorId);
-            }
-        }*/
     }
 
     $scope.$watch("selectedAuthor", function (newVal, oldVal) {
@@ -187,8 +173,6 @@ app.controller("addController", ["$scope", "book", "author", "genre", "image", "
 
     //This happens when you click Existing Title
     $scope.titleSelect = function (titleIndex, id) {
-        //$scope.newBookData.authors.push($scope.bookData.authorNames);
-        //$scope.newBookData.genres.push($scope.bookData.genreNames);
         
         $scope.newBookData.title = $scope.bookData[titleIndex].title;
         console.log("selectedTitle: ", $scope.newBookData.title);
