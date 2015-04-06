@@ -6,58 +6,59 @@
                 <h4 class="modal-title" id="myModalLabel" ng-repeat="book in bookData" ng-if="book.Id == bookId">{{book.title}}</h4>
             </div>
             <div class="modal-body">
-                <div class="bookCover" ng-repeat="book in bookData">
-                    <div>
-                            <img ng-src="{{selectedBook.images[0].imageUrl}}" />
-                    </div>
-                </div>
+
                 <div class="panel panel-default">
-                    <div class="panel-body" ng-hide="showDetailWindow">
-                        <ul class="list-group" ng-repeat="book in bookData" ng-if="book.Id == bookId">
-                            <li class="list-group-item" ng-repeat="author in book.authorNames">
-                                Author: <span class="badge">{{author.name}}</span>
-                            </li>
-                            <li class="list-group-item" ng-repeat="genre in book.genreNames">
-                                Genre: <span class="badge">{{genre.name}}</span>
-                            </li>
-                            <li class="list-group-item">
-                                Published: <span class="badge">{{book.year}}</span>
-                            </li>
-                            <li class="list-group-item">
-                                ISBN: <span class="badge"> {{book.isbn}}</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="panel-body" ng-show="editBookView">
-                        <ul class="list-group" ng-repeat="book in bookData" ng-if="book.Id == bookId">
-                            <li class="list-group-item" ng-repeat="author in book.authorNames">
-                                Author: <input type="text" class="form-control" ng-model="author.name">
-                            </li>
-                            <li class="list-group-item">
-                                Published: <input type="text" class="form-control" ng-model="book.year">
-                            </li>
-                            <li class="list-group-item" ng-repeat="genre in book.genreNames">
-                                Genre: <input type="text" class="form-control" ng-model="genre.name">
-                            </li>
-                            <li class="list-group-item">
-                                ISBN: <input type="text" class="form-control" ng-model="book.isbn">
-                            </li>
-                        </ul>
-                        <a class="saveButton" href="" ng-show="showSave" ng-click="saveData()">save</a>
-                    </div>
-                    <a href="" ng-hide="showEdit" ng-click="editBook()">edit</a>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-body" ng-repeat="book in bookData" ng-if="book.Id == bookId">
-                        <a href="" ng-hide="showTxtEdit">edit</a>
+                    <div class="row">
+                        <img class="modalBookCover col-xs-9 col-sm-5" ng-src="{{selectedBook.images[0].imageUrl}}" />
+                        <div class="modalDetails col-xs-12 col-sm-6" ng-hide="showDetailWindow">
+                            <ul class="list-group" ng-repeat="book in bookData" ng-if="book.Id == bookId">
+                                <li class="list-group-item">
+                                    <ul class="list-group">
+                                        Author:
+                                        <li id="righto" ng-repeat="author in book.authorNames">
+                                            {{author.name}}
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="list-group-item">
+                                    <ul class="list-group">
+                                        Genre:
+                                        <li id="righto" ng-repeat="genre in book.genreNames">
+                                            {{genre.name}}&nbsp;
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="list-group-item">
+                                    Published: <p id="righto"> {{book.year}} </p>
+                                </li>
+                                <li class="list-group-item">
+                                    ISBN: <p id="righto"> {{book.isbn}} </p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="panel-body" ng-show="editBookView">
+                            <ul class="list-group" ng-repeat="book in bookData" ng-if="book.Id == bookId">
+                                <li class="list-group-item" ng-repeat="author in book.authorNames">
+                                    Author: <input type="text" class="form-control" ng-model="author.name">
+                                </li>
+                                <li class="list-group-item">
+                                    Published: <input type="text" class="form-control" ng-model="book.year">
+                                </li>
+                                <li class="list-group-item" ng-repeat="genre in book.genreNames">
+                                    Genre: <input type="text" class="form-control" ng-model="genre.name">
+                                </li>
+                                <li class="list-group-item">
+                                    ISBN: <input type="text" class="form-control" ng-model="book.isbn">
+                                </li>
+                            </ul>
+
                         <p ng-hide="summary">{{book.description | limitTo: 150}}</p>
                         <p ng-show="more">{{book.description}}</p>
-                    </div><a href="" ng-click="readMore()">read more</a>
+                    </div><a href="" class="modalEditSaveReadMore" ng-click="readMore()">Read more</a>
                     <div class="collapse" id="collapseExample">
                         <div class="well">
                             ...
                         </div>
-                        </p>
                     </div>
                     <div class="form-group marg" ng-repeat="book in bookData" ng-if="book.Id == bookId" ng-show="showEditDescriptionWindow">
                         <textarea class="form-control" id="data" rows="5" ng-model="editDescription" placeholder="Add book description here...">{{book.description}}</textarea>

@@ -10,7 +10,55 @@
   font-size: 16px;
   vertical-align: text-bottom;
 }
+
+@media only screen and (max-width: 800px) {
+#tiny-screen-tables table,
+#tiny-screen-tables thead,
+#tiny-screen-tables tbody,
+#tiny-screen-tables th,
+#tiny-screen-tables td,
+#tiny-screen-tables tr {
+display: block;
+}
+ 
+#tiny-screen-tables thead tr {
+position: absolute;
+top: -9999px;
+left: -9999px;
+}
+ 
+#tiny-screen-tables tr { border: 1px solid #ccc; }
+ 
+#tiny-screen-tables td {
+border: none;
+border-bottom: 1px solid #eee;
+position: relative;
+padding-left: 50%;
+white-space: normal;
+text-align:left;
+}
+ 
+#tiny-screen-tables td:before {
+position: absolute;
+top: 6px;
+left: 6px;
+width: 45%;
+padding-right: 10px;
+white-space: nowrap;
+text-align:left;
+font-size: 18px;
+}
+ 
+#tiny-screen-tables td:before { 
+  content: attr(data-title); }
+}
+
+.bookViewSorting{
+    font-size: 20px;
+    color: black;
+}
 /*------------- BOOK VIEW -------------*/
+
 /*------------- HEAD --------*/
 .menuFont, .title, .partialTitle {
   font-family: 'Stint Ultra Condensed', cursive;
@@ -101,29 +149,48 @@ body {
   background-image: url("img/grayBackground.jpg");
   padding: 10px;
   text-align: center;
-  height: 130%;
-  width: 100%;
+
+}
+
+html, body {
+  height: 100%;
+}
+main {
+  min-height: 100%;
+  /* equal to footer height */
+  margin-bottom: -120px; 
+}
+main:after {
+  content: "";
+  display: block;
+}
+footer, main:after {
+  /* .push must be the same height as footer */
+  height: 120px; 
 }
 /*------------- FOOTER -------------*/
 /*---------------- BOOK DETAIL POP UP -------------------*/
-/*Set size of panel inside modal in bookDetails*/
-.panel{
-    width: 60%; 
-}
-/*Position book cover in bookDetailView*/
-.bookCover
-{
-  position:fixed;
-  right:1%;
-}
-/*Position the panel in bookView*/
 .center-panel{
   position:relative;
   width:100%;
 }
-/*Position Save button in bookEditView*/
-.saveButton{
-  position:right100%;
+.modalDetails{
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.modalBookCover{
+    margin: 10px;
+}
+
+#righto {
+    display: block;
+    text-align: right;
+}
+
+.modalEditSaveReadMore{
+    margin-left:10px;
+}
 }
 /*---------------- BOOK DETAIL POP UP -------------------*/
 /*---------------- LOG IN / LOG OUT -------------------*/
@@ -222,6 +289,7 @@ body {
 .scrollable-menu {
     height: auto;
     overflow-x: hidden;
+    max-height: 200px;
 }
 .whiteSurrounding {
   background: transparent;

@@ -5,32 +5,80 @@
                 <div class="partialTitle">Books:</div>
                 <div class="center-panel panel panel-default bookViewPanel">
                     <div modal="opened" ng-include src="'partials/modalView.html'"></div>
-                    <table class="table bookTable">
+                    <!-- COPY THIS TABLE-->
+                    <table class="table bookTable" id="tiny-screen-tables">
                         <thead>
                             <tr>
-                                <th>Title</th>
-                                <th>Author</th>
-                                <th>Genre</th>
+                                <th>
+                                    Title
+                                    <a href="" ng-click="sortBooksBy='title'; reverse=true" ng-class="{true: 'activeSort', false:''}[sortBooksBy == 'title' && reverse == true]">
+                                        <span class="bookViewSorting">&#x2193;</span>
+                                    </a>
+                                    &nbsp;
+                                    <a href="" ng-click="sortBooksBy='title'; reverse=false">
+                                        <span class="bookViewSorting">&#x2191; </span>
+                                    </a>
+                                </th>
+                                <th>
+                                    Author
+                                    <a href="" ng-click="sortBooksBy='authorNames[0].name'; reverse=true" ng-class="{true: 'activeSort', false:''}[sortBooksBy == 'authorNames[0].name' && reverse == true]">
+                                        <span class="bookViewSorting">&#x2193;</span>
+                                    </a>
+                                    &nbsp;
+                                    <a href="" ng-click="sortBooksBy='authorNames[0].name'; reverse=false">
+                                        <span class="bookViewSorting">&#x2191; </span>
+                                    </a>
+                                </th>
+                                <th>
+                                    Genre
+                                    <a href="" ng-click="sortBooksBy='genreNames[0].name'; reverse=true" ng-class="{true: 'activeSort', false:''}[sortBooksBy == 'genreNames[0].name' && reverse == true]">
+                                        <span class="bookViewSorting">&#x2193;</span>
+                                    </a>
+                                    &nbsp;
+                                    <a href="" ng-click="sortBooksBy='genreNames[0].name'; reverse=false">
+                                        <span class="bookViewSorting"> &#x2191;</span>
+                                    </a>
+                                </th>
                                 <th>Details</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr ng-repeat="book in bookData">
-                                <td>
+
+
+                        <tbody id="tiny-screen-tables">
+
+                            <tr ng-repeat="book in bookData | filter: query | orderBy: sortBooksBy : reverse">
+                                <td id="tiny-screen-tables" data-title="Title">
                                     <a data-toggle="modal" id="{{book.Id}}" data-target="#myModal" ng-click="getBookId(book.Id, $index)">
                                         {{book.title}}
                                     </a>
+
                                 </td>
-                                <td ng-repeat="author in book.authorNames">{{author.name}}</td>
-                                <td ng-repeat="genre in book.genreNames">{{genre.name}}</td>
-                                <td>
+                                <td id="tiny-screen-tables" data-title="Author">
+                                    <!-- MORE THAN 1 AUTHOR PER BOOK, UL/LI FTW-->
+                                    <ul>
+                                        <li ng-repeat="author in book.authorNames">{{author.name}}</li>
+                                    </ul>
+
+                                </td>
+
+                                <td id="tiny-screen-tables" data-title="Genre">
+                                    <!-- MORE THAN 1 GENRE PER BOOK, UL/LI FTW-->
+                                    <ul>
+                                        <li ng-repeat="genre in book.genreNames">{{genre.name}}</li>
+                                    </ul>
+
+                                </td>
+
+                                <td id="tiny-screen-tables" data-title="Book Details">
+
                                     <button type="button" id="{{book.Id}}" class="btn btn-default" data-toggle="modal" data-target="#myModal" ng-click="getBookId(book.Id, $index)">
                                         Book Details
                                     </button>
+
                                 </td>
-                            </tr>
                         </tbody>
                     </table>
+                    <!-- //COPY THIS TABLE-->
                 </div>
             </div>
         </section>
