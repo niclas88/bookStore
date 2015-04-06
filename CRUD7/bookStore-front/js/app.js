@@ -22,20 +22,12 @@ var app = angular.module("bookStore", ["ngRoute", "ui.bootstrap", "ngResource"])
 			when("/addGenre", {
 			    templateUrl: "/bookStore-front/partials/addGenreView.html",
 						  controller: "addGenreController"}).
-
-
-		/*Possible routing for deletion.
-		when("/delete", {templateUrl: "partials/addView.html",
-						  controller: "editController"}).
-		*/
-
-
-			when("/authorDetails", {
-			    templateUrl: "/bookStore-front/partials/authorDetailView.html",
-						  controller: "authorDetailController"}).
-			when("/bookDetails", {
-			    templateUrl: "/bookStore-front/partials/bookDetailView.html",
-						  controller: "bookDetailController"}).
+			//when("/authorDetails", {
+			//    templateUrl: "/bookStore-front/partials/authorDetailView.html",
+			//			  controller: "authorDetailController"}).
+			//when("/bookDetails", {
+			//    templateUrl: "/bookStore-front/partials/bookDetailView.html",
+			//			  controller: "bookDetailController"}).
 			when("/search", {
 			    templateUrl: "/bookStore-front/partials/search.html",
 						  controller: "searchController"}).

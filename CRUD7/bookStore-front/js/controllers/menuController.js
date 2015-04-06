@@ -3,11 +3,12 @@ app.controller("menuController", ["$scope", "$rootScope", "$location", "users", 
 
 	var loggedIn;
 	var loggedInUser;
+	var loggedInPass;
+	$scope.userNameInput = null;
+	$scope.passwordInput = null;
 	$scope.goTo = function(path) {
 		$location.url(path);
 	}
-
-	
 
 	/*$rootScope.sortBy = "all";
 	$rootScope.query = {};
@@ -21,6 +22,13 @@ app.controller("menuController", ["$scope", "$rootScope", "$location", "users", 
 	        var pass = $scope.userData[u].password;
 	        if (userName == name && password == pass) {
 	            loggedInUser = name;
+	            loggedInPass = pass;
+	        }
+	    }
+            if (userName == null || password == null) {
+	    alert("You need to enter username and password to log in!");
+	    }
+	        else if (userName == loggedInUser && password == loggedInPass) {
 	            loggedIn = true;
 	            alertWindow();
 	            if (loggedIn) {
@@ -32,7 +40,9 @@ app.controller("menuController", ["$scope", "$rootScope", "$location", "users", 
 	                $rootScope.showTxtEdit = true;
 	            }
 	        }
-	    }
+	        else {
+                alert("Invalid username or password!")
+	        }
 	}
 	$scope.logOut = function(){
 		loggedIn = false;
@@ -53,5 +63,6 @@ app.controller("menuController", ["$scope", "$rootScope", "$location", "users", 
 			w.focus()
 			setTimeout(function() {w.close();}, 1500)
 	}
+	
 
 }]);

@@ -118,6 +118,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="bookStore-front\data\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -202,13 +203,10 @@
     <Content Include="bookStore-front\js\controllers\addController.js" />
     <Content Include="bookStore-front\js\controllers\addGenreController.js" />
     <Content Include="bookStore-front\js\controllers\authorController.js" />
-    <Content Include="bookStore-front\js\controllers\authorDetailController.js" />
     <Content Include="bookStore-front\js\controllers\bookController.js" />
-    <Content Include="bookStore-front\js\controllers\bookDetailController.js" />
     <Content Include="bookStore-front\js\controllers\genreController.js" />
     <Content Include="bookStore-front\js\controllers\homeController.js" />
     <Content Include="bookStore-front\js\controllers\menuController.js" />
-    <Content Include="bookStore-front\js\controllers\ratingController.js" />
     <Content Include="bookStore-front\js\controllers\searchController.js" />
     <Content Include="bookStore-front\js\factories.js" />
     <Content Include="bookStore-front\js\main.js" />
@@ -244,7 +242,6 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
     <Content Include="bookStore-front\.htaccess" />
-    <Content Include="bookStore-front\data\bookData.json" />
     <Content Include="bookStore-front\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="bookStore-front\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="bookStore-front\fonts\glyphicons-halflings-regular.woff" />
@@ -254,7 +251,6 @@
     <Content Include="bookStore-front\js\controllers\.DS_Store" />
     <Content Include="bookStore-front\partials\.DS_Store" />
     <Content Include="bookStore-front\README.md" />
-    <Content Include="bookStore-front\data\userData.json" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

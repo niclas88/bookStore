@@ -1,10 +1,8 @@
 app.controller("authorController", ["$scope", "author", "book", function($scope, author, book){
 
     $scope.authorData = author.index(function (data) {
-        console.log($scope.authorData, "authorBooks");
     });
     $scope.bookData = book.index(function (data) {
-        console.log($scope.bookData, "BOOKS");
     });
 
     kek = function () {
@@ -14,7 +12,6 @@ app.controller("authorController", ["$scope", "author", "book", function($scope,
     $scope.getBookId = function (bookId, bookIndex) {
         $scope.bookId = bookId;
         $scope.selectedBook = $scope.bookData[bookIndex];
-        console.log(bookId);
     }
     
     $scope.readMore = function () {
@@ -34,5 +31,3 @@ app.controller("authorController", ["$scope", "author", "book", function($scope,
     }
 	
 }]);
-
-//Var anropas denna controllern? Eller är AuthornView länkat istället till bookController?

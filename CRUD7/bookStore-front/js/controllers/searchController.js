@@ -13,7 +13,6 @@ app.controller("searchController", ["$scope", "book", "$rootScope", "$routeParam
     //});
 
     $scope.bookData = book.index(function (data) {
-        console.log("BOOKS - to search from", $scope.bookData);
         // add a new property that mashes all properties
         // into one string in order to make filter = all work
         $scope.bookData.forEach(function (book) {
@@ -22,7 +21,7 @@ app.controller("searchController", ["$scope", "book", "$rootScope", "$routeParam
     });
 
     if ($routeParams) {
-        console.log("searchController got $routeParams: ", $routeParams, " now using these as $scope.query...");
+        //console.log("searchController got $routeParams: ", $routeParams, " now using these as $scope.query...");
         $rootScope.query = $routeParams;
     }
 
@@ -39,8 +38,8 @@ app.controller("searchController", ["$scope", "book", "$rootScope", "$routeParam
     });
 
     $scope.goSearch = function () {
-        console.log("User wants to search with query: ", $rootScope.query);
-        console.log("now changing $location to: " + "/search?" + $scope.sortBy + "=" + $rootScope.query[$scope.sortBy]);
+        //console.log("User wants to search with query: ", $rootScope.query);
+        //console.log("now changing $location to: " + "/search?" + $scope.sortBy + "=" + $rootScope.query[$scope.sortBy]);
         $location.url("/search?" + $scope.sortBy + "=" + $rootScope.query[$scope.sortBy]);
     }
 }]);

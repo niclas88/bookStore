@@ -7,16 +7,12 @@ app.controller("addController", ["$scope", "book", "author", "genre", "image", "
     $scope.cantWrite = true;
 
     $scope.bookData = book.index(function (data) {
-        console.log($scope.bookData, "BOOKS");
     });
     $scope.authorData = author.index(function (data) {
-        console.log($scope.authorData, "Authors");
     });
     $scope.genreData = genre.index(function (data) {
-        console.log($scope.genreData, "Genres");
     });
     $scope.imageData = image.index(function (data) {
-        console.log($scope.imageData, "Images");
     });
 
 
@@ -64,7 +60,7 @@ app.controller("addController", ["$scope", "book", "author", "genre", "image", "
         for (var i = 0; i < ai.length; i++) {
             toSave.imagesIds.push(ai[i].Id);
         }
-        console.log("The backend friendly book", toSave);
+        //console.log("The backend friendly book", toSave);
         book.create(toSave);
         $scope.newBookDataPresentation = {};
         $scope.newBookData = {};
@@ -72,9 +68,7 @@ app.controller("addController", ["$scope", "book", "author", "genre", "image", "
     }
 
     $scope.save = function () {
-        console.log("newBookData: ", $scope.newBookData);
-
-        //$http.post("someurl", $scope.newBookData);
+        //console.log("newBookData: ", $scope.newBookData);
 
         if (!$scope.newBookData.authors || !$scope.newBookData.title ||
             !$scope.newBookData.genres || !$scope.newBookData.isbn ||
@@ -83,11 +77,10 @@ app.controller("addController", ["$scope", "book", "author", "genre", "image", "
             $scope.alerts.push({ type: 'danger', msg: 'Enter all the credentials, fker.' })
 
             $scope.newBookData = {};
-            console.log("Some fields weren't filled in. newBookData = ", $scope.newBookData)
+            //console.log("Some fields weren't filled in. newBookData = ", $scope.newBookData)
         }
         else {
  
-            //THomas kod för att sparade authorId i authorIds för att koppla författare till bokobjekt
             var toSave = { 
                 authorIds: [], 
                 genreIds: [], 
@@ -113,7 +106,7 @@ app.controller("addController", ["$scope", "book", "author", "genre", "image", "
             for (var i = 0; i < ai.length; i++) {
                 toSave.imagesIds.push(ai[i].Id);
             }
-            console.log("The backend friendly book", toSave);
+            //console.log("The backend friendly book", toSave);
             book.create(toSave);
             $scope.newBookDataPresentation = {};
             $scope.newBookData = {};
@@ -134,9 +127,9 @@ app.controller("addController", ["$scope", "book", "author", "genre", "image", "
         }
     }
 
-    $scope.$watch("selectedAuthor", function (newVal, oldVal) {
-        console.log("selectedAuthor changed from ", oldVal, " to ", newVal);
-    })
+    //$scope.$watch("selectedAuthor", function (newVal, oldVal) {
+    //    console.log("selectedAuthor changed from ", oldVal, " to ", newVal);
+    //})
 
     $scope.newBookData.genres = [];
     $scope.newBookDataPresentation = {};
@@ -156,7 +149,7 @@ app.controller("addController", ["$scope", "book", "author", "genre", "image", "
     $scope.newBookDataPresentation = {}
     
     $scope.imageSelect = function (imageIndex) {
-        console.log("User selected image: ", $scope.imageData[imageIndex].imageUrl);
+        //console.log("User selected image: ", $scope.imageData[imageIndex].imageUrl);
         $scope.newBookData.images.push($scope.imageData[imageIndex]);
 
         $scope.newBookDataPresentation.images = "";
@@ -167,15 +160,15 @@ app.controller("addController", ["$scope", "book", "author", "genre", "image", "
 
     }
 
-    $scope.$watch("selectedGenre", function (newVal, oldVal) {
-        console.log("selectedGenre changed from ", oldVal, " to ", newVal);
-    })
+    //$scope.$watch("selectedGenre", function (newVal, oldVal) {
+    //    console.log("selectedGenre changed from ", oldVal, " to ", newVal);
+    //})
 
     //This happens when you click Existing Title
     $scope.titleSelect = function (titleIndex, id) {
         
         $scope.newBookData.title = $scope.bookData[titleIndex].title;
-        console.log("selectedTitle: ", $scope.newBookData.title);
+        //console.log("selectedTitle: ", $scope.newBookData.title);
 
         for (var i in $scope.bookData) {
            var bookId = $scope.bookData[i].Id;
@@ -208,21 +201,20 @@ app.controller("addController", ["$scope", "book", "author", "genre", "image", "
                 $scope.newBookDataPresentation.images = image.imageUrl;
                 
                
-                console.log("User selected things: ", $scope.newBookData);
+                //console.log("User selected things: ", $scope.newBookData);
 
                 idToDelete = $scope.bookData[i].Id;
-                console.log(idToDelete);
             }
         }
     }
     $scope.delete = function () {
-        console.log(idToDelete);
+        //console.log(idToDelete);
         book.destroy({ id: idToDelete });
     };
 
-    $scope.$watch("selectedTitle", function (newVal, oldVal) {
-        console.log("selectedTitle changed from ", oldVal, " to ", newVal);
-    })
+    //$scope.$watch("selectedTitle", function (newVal, oldVal) {
+    //    console.log("selectedTitle changed from ", oldVal, " to ", newVal);
+    //})
 
 
     $scope.alerts = [];

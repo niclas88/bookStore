@@ -1,10 +1,8 @@
 app.controller("genreController", ["$scope", "genre", "book", function($scope, genre, book){
 	
     $scope.genreData = genre.index(function (data) {
-        console.log($scope.genreData, "authorBooks");
     });
     $scope.bookData = book.index(function (data) {
-        console.log($scope.bookData, "BOOKS");
     });
     kek = function () {
         console.log(JSON.stringify($scope.selectedBook), null, '\t');
@@ -13,7 +11,6 @@ app.controller("genreController", ["$scope", "genre", "book", function($scope, g
     $scope.getBookId = function (bookId, bookIndex) {
         $scope.bookId = bookId;
         $scope.selectedBook = $scope.bookData[bookIndex];
-        console.log(bookId);
     }
     $scope.readMore = function () {
         $scope.more = !$scope.more;
