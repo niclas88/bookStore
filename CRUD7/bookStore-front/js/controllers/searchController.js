@@ -28,14 +28,14 @@ app.controller("searchController", ["$scope", "book", "$rootScope", "$routeParam
 
     //$rootScope.$watch("query",function(x){console.log("query",x)});
     $scope.$watch("searchFilterResult", function (newVal, oldVal) {
-        console.log("searchFilterResult changed from ", oldVal, " to ", newVal);
+        //console.log("searchFilterResult changed from ", oldVal, " to ", newVal);
     });
 
     $scope.$watch("sortBy", function (newVal, oldVal) {
         if (!oldVal) { return; }
         var textVal = $rootScope.query[oldVal];
         $rootScope.query[newVal] = textVal;
-        console.log("sortBy changed from ", oldVal, " to ", newVal);
+        //console.log("sortBy changed from ", oldVal, " to ", newVal);
     });
 
     $scope.goSearch = function () {

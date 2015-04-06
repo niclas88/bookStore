@@ -5,6 +5,7 @@ app.controller("addController", ["$scope", "book", "author", "genre", "image", "
     $scope.formTitle = "Please enter book credentials";
     $scope.saveBtnText = "Add to database";
     $scope.canDelete = true;
+    $scope.cantWrite = true;
 
     $scope.bookData = book.index(function (data) {
         console.log($scope.bookData, "BOOKS");
@@ -23,6 +24,16 @@ app.controller("addController", ["$scope", "book", "author", "genre", "image", "
 
     $scope.goTos = function (path) {
         $location.url(path);
+    }
+
+    $scope.clearAuthor = function () {
+        $scope.newBookData.authors = [];
+        $scope.newBookDataPresentation.authors = "";
+    }
+
+    $scope.clearGenre = function () {
+        $scope.newBookData.genres = [];
+        $scope.newBookDataPresentation.genres = "";
     }
 
     $scope.edit = function () {
